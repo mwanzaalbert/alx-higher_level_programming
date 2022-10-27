@@ -1,2 +1,2 @@
-/*List all the tabls of database */
+-- List all the tabls of database
 SHOW TABLES;
