@@ -1,7 +1,15 @@
-#!/usr/bin/python3
-weight_average = __import__('100-weight_average').weight_average
+def weight_average(my_list=[]):
+    if len(my_list) == 0:
+        return 0
 
-my_list = [(1, 2), (2, 1), (3, 10), (4, 2)]
-# = ((1 * 2) + (2 * 1) + (3 * 10) + (4 * 2)) / (2 + 1 + 10 + 2)
-result = weight_average(my_list)
-print("Average: {:0.2f}".format(result))
+    total_score = 0
+    total_weight = 0
+
+    for score, weight in my_list:
+        total_score += score * weight
+        total_weight += weight
+
+    if total_weight == 0:
+        return 0
+
+    return total_score 
