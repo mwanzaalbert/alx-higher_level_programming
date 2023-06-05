@@ -1,0 +1,41 @@
+
+quare
+===========================
+Function
+========.
+function that prints a square with the character #
+
+Import module:
+    >>> print_square = __import__('4-print_square').print_square
+
+Operations
+==========
+
+Int
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+diferent from integer
+    >>> print_square("Hello")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+< than zero
+    >>> print_square(-2)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+
+float < than 0
+    >>> print_square(-2.4)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+No arguments:
+    >>> print_square()
+    Traceback (most recent call last):
+    ...
+    TypeError: print_square() missing 1 required positional argument: 'size'
+
