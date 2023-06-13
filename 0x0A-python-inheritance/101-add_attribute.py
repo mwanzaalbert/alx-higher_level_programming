@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def add_attribute(obj, attribute_name, value):
     if hasattr(obj, attribute_name):
         raise TypeError("can't add new attribute")
