@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-
-import sys
-
 def print_metrics(total_size, status_codes):
     print(f"File size: {total_size}")
     for code, count in sorted(status_codes.items()):
