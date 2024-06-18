@@ -1,4 +1,4 @@
-#!bin/bash env node
+#!/usr/bin/env node
 
 const myVar = "JavaScript is amazing";
 
