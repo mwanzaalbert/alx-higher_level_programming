@@ -8,7 +8,7 @@ function getSecondLargest (argList) {
   if (argList.length < 2) {
     return 0;
   } else {
-    const sortedData = [...(argList)].sort();
+    const sortedData = [...(argList)].sort((a, b) => b - a);
     return sortedData[sortedData.length - 2];
   }
 }
