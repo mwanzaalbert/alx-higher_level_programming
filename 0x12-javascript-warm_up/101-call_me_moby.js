@@ -1,10 +1,10 @@
 #!/usr/bin/node
 
-exports.callMeMoby = function (x, theFunction){
+exports.callMeMoby = function (x, theFunction) {
   let counter = x;
 
-  do{
+  do {
     theFunction();
     counter--;
-  }while (counter > 0)
-}
+  } while (counter > 0);
+};
