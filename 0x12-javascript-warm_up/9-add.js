@@ -11,5 +11,5 @@ function add (a, b) {
   }
 }
 
-let sum = add(x, y);
+const sum = add(x, y);
 console.log(sum);
