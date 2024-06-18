@@ -5,4 +5,4 @@ const myObject = {
 };
 console.log(myObject);
 
-myObject['inc'] = function() { this.value++; };
+myObject.inc = function () { this.value++; };
