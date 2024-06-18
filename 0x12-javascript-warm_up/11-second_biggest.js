@@ -6,7 +6,7 @@ const secondLargest = getSecondLargest(argsData);
 
 function getSecondLargest (argList) {
   if (argList.length < 2) {
-    return 1;
+    return 0;
   } else {
     const sortedData = [...(argList)].sort();
     return sortedData[sortedData.length - 2];
