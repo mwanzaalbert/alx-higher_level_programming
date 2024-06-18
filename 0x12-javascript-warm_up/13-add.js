@@ -1,3 +1,5 @@
 #!/usr/bin/node
 
-module.exports = (a, b) => a + b;
+module.exports = function(a, b){
+  return a + b;
+}
