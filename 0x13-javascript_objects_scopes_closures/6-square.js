@@ -9,12 +9,18 @@ class Square extends SquareParent {
    * Prints this Square with the given character, otherwise 'X'.
    * @param {String} c The character to print this Square with.
    */
-  charPrint (c) {
-    const pen = c === undefined ? 'X' : c;
-    const row = new Array(this.width).fill(pen, 0, this.width);
-    const rows = new Array(this.height).fill(row.join(''), 0, this.height);
-    console.log(rows.join('\n'));
-  }
+  charPrint(toPrint=''){
+		if (toPrint){
+			for(let counter = 0, row = this.height; counter < row; counter++){
+				for(let count = 0, col = this.width; count < col; count++){
+					process.stdout.write(toPrint);
+				}
+				console.log();
+			}
+		}else{
+			this.print();
+		}
+	}
 }
 
 module.exports = Square;
