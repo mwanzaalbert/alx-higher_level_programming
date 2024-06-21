@@ -18,14 +18,14 @@ class Rectangle {
   /**
    * Prints this Rectangle with the character 'X'.
    */
-  print(){
-		for(let counter = 0, row = this.height; counter < row; counter++){
-			for(let count = 0, col = this.width; count < col; count++){
-				process.stdout.write("X");
-			}
-			console.log();
-		}
-	}
+  print () {
+    for (let counter = 0, row = this.height; counter < row; counter++) {
+      for (let count = 0, col = this.width; count < col; count++) {
+        process.stdout.write('X');
+      }
+      console.log();
+    }
+  }
 }
 
 module.exports = Rectangle;
