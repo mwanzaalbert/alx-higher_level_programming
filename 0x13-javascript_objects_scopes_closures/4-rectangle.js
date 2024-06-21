@@ -18,21 +18,21 @@ class Rectangle {
   /**
    * Prints this Rectangle with the character 'X'.
    */
-  print(){
-		for(let counter = 0, row = this.height; counter < row; counter++){
-			for(let count = 0, col = this.width; count < col; count++){
-				process.stdout.write("X");
-			}
-			console.log();
-		}
-	}
+  print () {
+    for (let counter = 0, row = this.height; counter < row; counter++) {
+      for (let count = 0, col = this.width; count < col; count++) {
+        process.stdout.write('X');
+      }
+      console.log();
+    }
+  }
 
   /**
    * Swaps the width and height of this Rectangle.
    */
-  rotate(){
-		[this.width, this.height] = [this.height, this.width];
-	}
+  rotate () {
+    [this.width, this.height] = [this.height, this.width];
+  }
 
   /**
    * Doubles the dimensions of this Rectangle.
