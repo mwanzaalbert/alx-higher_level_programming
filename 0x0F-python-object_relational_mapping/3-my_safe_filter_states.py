@@ -19,15 +19,11 @@ def get_database_arguments():
                 the state name to search.
                If any argument is missing, it returns None for that argument.
     """
-    db_args = sys.argv
-
-    usr = db_args[1] if len(db_args) > 1 else None
-    pwd = db_args[2] if len(db_args) > 2 else None
-    dbase = db_args[3] if len(db_args) > 3 else None
-    to_search = db_args[4] if len(db_args) > 4 else None
-
-    # if to_search:
-    #     to_search = to_search[:to_search.rfind("';")]
+    if len(sys.argv) >= 4:
+        usr = sys.argv[1]
+        pwd = sys.argv[2]
+        dbase = sys.argv[3]
+        to_search = sys.argv[4]
 
     return usr, pwd, dbase, to_search
 
@@ -65,8 +61,9 @@ def fetch_and_print_state(cursor, to_search):
                 query.
         to_search (str): The name of the state to search for.
     """
-    cursor.execute(
-        "SELECT * FROM states WHERE name=%s ORDER BY id ASC" % (to_search,))
+    query = "SELECT * FROM states WHERE BINARY name='%s' ORDER BY id ASC" % \
+        (to_search,)
+    cursor.execute(query)
     query_rows = cursor.fetchall()
     for row in query_rows:
         print(row)
