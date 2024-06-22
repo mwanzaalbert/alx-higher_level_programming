@@ -61,7 +61,7 @@ def fetch_and_print_cities(cursor, state_name):
     cursor.execute(query, (state_name,))
     query_rows = cursor.fetchall()
 
-    print(", ".join([row[0] for row in query_rows]))
+    print(", ".join([row[0] for row in query_rows]), end="")
     
 
 def main():

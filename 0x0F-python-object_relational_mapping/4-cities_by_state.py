@@ -43,8 +43,7 @@ def connect_to_database(usr, pwd, dbase):
         port=3306,
         user=usr,
         passwd=pwd,
-        db=dbase,
-        charset="utf8"
+        db=dbase
     )
 
 
