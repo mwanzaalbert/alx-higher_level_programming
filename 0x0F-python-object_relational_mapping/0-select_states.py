@@ -37,13 +37,8 @@ def connect_to_database(usr, pwd, dbase):
     Returns_:
         MySQLdb.Connection: A connection object to the MySQL database.
     """
-    return MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=usr,
-        passwd=pwd,
-        db=dbase,
-    )
+    return MySQLdb.connect(host="localhost", port=3306, user=usr, passwd=pwd,
+                           db=dbase)
 
 
 def fetch_and_print_states(cursor):
@@ -79,19 +74,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-#!/usr/bin/env python3
-
-
-# db_args = sys.argv
-
-# if len(db_args) > 1:
-#     usr = sys.argv[1]
-# if len(db_args) > 2:
-#     pwd = sys.argv[2]
-# if len(db_args) > 3:
-#     dbase = sys.argv[3]
 
 
 # conn = MySQLdb.connect(host="localhost", port=3306,
