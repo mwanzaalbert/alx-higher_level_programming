@@ -62,7 +62,7 @@ def fetch_and_print_state(cursor, to_search):
     """
     query = """
     SELECT * FROM states
-    WHERE BINARY name LIKE {}
+    WHERE BINARY name LIKE `{}`
     ORDER BY id ASC
     """.format(to_search)
 
