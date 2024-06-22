@@ -63,7 +63,10 @@ def fetch_and_print_cities(cursor, state_name):
     query_rows = cursor.fetchall()
     
     for index, row in enumerate(query_rows):
-        if index < len(query_rows) - 1:
+        if not row:
+            print("".join(row), end="")
+            break
+        elif index < len(query_rows) - 1:
             print(row[0], end=", ")
         else:
             print(row[0])
