@@ -58,7 +58,7 @@ def fetch_and_print_states(cursor):
         query.
     """
     query = "SELECT * FROM states WHERE name is NOT NULL AND name LIKE " +\
-        "'N%' ORDER BY id ASC"
+        "BINARY 'N%' ORDER BY id ASC"
     cursor.execute(query)
     query_rows = cursor.fetchall()
     for row in query_rows:
