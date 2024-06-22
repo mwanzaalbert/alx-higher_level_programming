@@ -45,8 +45,7 @@ def connect_to_database(usr, pwd, dbase):
         port=3306,
         user=usr,
         passwd=pwd,
-        db=dbase,
-        charset="utf8"
+        db=dbase
     )
 
 
@@ -64,11 +63,11 @@ def fetch_and_print_cities(cursor, state_name):
     SELECT cities.id, cities.name, states.name
     FROM cities
     JOIN states ON cities.state_id = states.id
-    WHERE BINARY states.name = '%s'
+    WHERE states.name BINARY LIKE '%s'
     ORDER BY cities.id ASC;
-    """ % (state_name,)
+    """
 
-    cursor.execute(query)
+    cursor.execute(query, (state_name,))
     query_rows = cursor.fetchall()
 
     for index, row in enumerate(query_rows):
