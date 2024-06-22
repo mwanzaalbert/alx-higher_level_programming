@@ -55,8 +55,9 @@ def fetch_and_print_cities(cursor, state_name):
     """
     query = """SELECT cities.name FROM cities
     INNER JOIN states ON states.id = cities.state_id
+    ORDER BY cities.id ASC
     WHERE BINARY states.name=%s
-    ORDER BY cities.id ASC"""
+    """
 
     cursor.execute(query, (state_name,))
     query_rows = cursor.fetchall()
