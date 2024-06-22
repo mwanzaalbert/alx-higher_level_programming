@@ -19,7 +19,7 @@ def get_database_arguments():
                 the state name to search.
                If any argument is missing, it returns None for that argument.
     """
-    if len(sys.argv) >= 4:
+    if len(sys.argv) >= 5:
         usr = sys.argv[1]
         pwd = sys.argv[2]
         dbase = sys.argv[3]
