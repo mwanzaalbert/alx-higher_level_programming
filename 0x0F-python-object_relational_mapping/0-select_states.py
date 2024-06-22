@@ -43,7 +43,6 @@ def connect_to_database(usr, pwd, dbase):
         user=usr,
         passwd=pwd,
         db=dbase,
-        charset="utf8"
     )
 
 
