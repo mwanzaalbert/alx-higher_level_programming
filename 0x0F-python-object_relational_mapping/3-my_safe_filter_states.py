@@ -46,7 +46,6 @@ def connect_to_database(usr, pwd, dbase):
         user=usr,
         passwd=pwd,
         db=dbase,
-        charset="utf8"
     )
 
 
@@ -61,8 +60,8 @@ def fetch_and_print_state(cursor, to_search):
                 query.
         to_search (str): The name of the state to search for.
     """
-    query = "SELECT * FROM states WHERE BINARY name='%s' ORDER BY id ASC" % \
-        (to_search,)
+    query = "SELECT * FROM states WHERE name BINARY LIKE " + \
+        " {} ORDER BY id ASC".format(to_search,)
     cursor.execute(query)
     query_rows = cursor.fetchall()
     for row in query_rows:
