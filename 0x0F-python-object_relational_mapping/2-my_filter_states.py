@@ -60,11 +60,11 @@ def fetch_and_print_state(cursor, to_search):
                 query.
         to_search (str): The name of the state to search for.
     """
-    query = f"""
+    query = """
     SELECT * FROM states
-    WHERE BINARY name LIKE {to_search}
+    WHERE BINARY name LIKE {}
     ORDER BY id ASC
-    """
+    """.format(to_search)
 
     cursor.execute(query)
     query_rows = cursor.fetchall()
