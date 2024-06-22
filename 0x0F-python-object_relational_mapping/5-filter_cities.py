@@ -53,7 +53,7 @@ def fetch_and_print_cities(cursor, state_name):
         cursor (MySQLdb.cursors.Cursor): The cursor object to execute the query
         state_name (str): The name of the state to search for.
     """
-    query = """SELECT cities.id, cities.name, states.name
+    query = """SELECT cities.name
     FROM cities INNER JOIN states ON cities.state_id = states.id
     WHERE states.name = %s ORDER BY cities.id ASC"""
 
@@ -62,9 +62,9 @@ def fetch_and_print_cities(cursor, state_name):
 
     for index, row in enumerate(query_rows):
         if index < (len(query_rows) - 1):
-            print(row[1], end=", ")
+            print(row[0], end=", ")
         else:
-            print(row[1])
+            print(row[0])
 
 
 def main():
