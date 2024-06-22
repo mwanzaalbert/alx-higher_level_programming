@@ -19,7 +19,7 @@ def get_database_arguments():
                 the state name to search respectively.
                If any argument is missing, it returns None for that argument.
     """
-    return sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+    return sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4].strip("""'" """)
 
 
 def connect_to_database(usr, pwd, dbase):
