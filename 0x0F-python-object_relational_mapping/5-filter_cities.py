@@ -55,7 +55,7 @@ def fetch_and_print_cities(cursor, state_name):
     """
     query = """SELECT cities.name FROM cities
     LEFT JOIN states ON cities.state_id = states.id
-    WHERE BINARY states.name = %s
+    WHERE BINARY states.name = BINARY %s
     ORDER BY cities.id ASC"""
 
     cursor.execute(query, (state_name,))
