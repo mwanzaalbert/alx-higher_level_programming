@@ -18,11 +18,10 @@ def get_database_arguments():
         tuple_: A tuple containing the username, password, and database name.
                If any argument is missing, it returns None for that argument.
     """
-    db_args = sys.argv
-
-    usr = db_args[1] if len(db_args) > 1 else None
-    pwd = db_args[2] if len(db_args) > 2 else None
-    dbase = db_args[3] if len(db_args) > 3 else None
+    if len(sys.argv) >= 4:
+        usr = sys.argv[1]
+        pwd = sys.argv[2]
+        dbase = sys.argv[3]
 
     return usr, pwd, dbase
 
@@ -45,7 +44,6 @@ def connect_to_database(usr, pwd, dbase):
         user=usr,
         passwd=pwd,
         db=dbase,
-        charset="utf8"
     )
 
 
