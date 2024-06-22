@@ -19,7 +19,7 @@ def get_database_arguments():
                 the state name to search respectively.
                If any argument is missing, it returns None for that argument.
     """
-    return sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4].strip("""'" """)
+    return sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 
 
 def connect_to_database(usr, pwd, dbase):
@@ -61,12 +61,8 @@ def fetch_and_print_cities(cursor, state_name):
     cursor.execute(query, (state_name,))
     query_rows = cursor.fetchall()
 
-    for index, row in enumerate(query_rows):
-        if index < (len(query_rows) - 1):
-            print(row[0], end=", ")
-        else:
-            print(row[0])
-
+    print(", ".join([row[0] for row in query_rows]))
+    
 
 def main():
     """Entry point of program to execute the database operations."""
