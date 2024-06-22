@@ -99,35 +99,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-# #!/usr/bin/env python3
-
-# import MySQLdb, sys
-
-# db_args = sys.argv
-
-# if len(db_args) > 1: usr = sys.argv[1]
-# if len(db_args) > 2: pwd = sys.argv[2]
-# if len(db_args) > 3: dbase = sys.argv[3]
-# if len(db_args) > 4: tosearch = sys.argv[4]
-
-# conn = MySQLdb.connect(host="localhost", port=3306, user=usr, passwd=pwd, db=dbase, charset="utf8")
-# cur = conn.cursor()
-# cur.execute("""
-# SELECT cities.id, cities.name, states.name
-# FROM cities
-# JOIN states on cities.state_id = states.id
-# WHERE states.name = '%s'
-# ORDER BY cities.id ASC;""" % (tosearch,))
-
-# query_rows = cur.fetchall()
-
-# for index, row in enumerate(query_rows):
-#     if index < (len(query_rows) - 1):
-#         print(row[-2], end=", ")
-#     else:
-#         print(row[-1])
-
-# cur.close()
-# conn.close()

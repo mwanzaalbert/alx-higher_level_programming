@@ -92,26 +92,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-# #!/usr/bin/env python3
-# import sys
-# import MySQLdb
-
-# db_args = sys.argv
-
-# if len(db_args) > 1: usr = sys.argv[1]
-# if len(db_args) > 2: pwd = sys.argv[2]
-# if len(db_args) > 3: dbase = sys.argv[3]
-# if len(db_args) > 4: to_search = sys.argv[4]
-
-# to_search = to_search[:to_search.rfind("';")]
-
-# conn = MySQLdb.connect(host="localhost", port=3306, user=usr, passwd=pwd, db=dbase, charset="utf8")
-# cur = conn.cursor()
-# cur.execute("SELECT * FROM states WHERE name='%s' ORDER BY id ASC" % (to_search,)) # using format specifier
-# query_rows = cur.fetchall()
-# for row in query_rows:
-#     print(row)
-# cur.close()
-# conn.close()
