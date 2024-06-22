@@ -65,7 +65,7 @@ def fetch_and_print_cities(cursor, state_name):
         if index < (len(query_rows) - 1):
             print(row[0], end=", ")
         else:
-            print(row[0], end="")
+            print(row[0])
 
 
 def main():
