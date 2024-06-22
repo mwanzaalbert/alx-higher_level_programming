@@ -45,7 +45,7 @@ def connect_to_database(usr, pwd, dbase):
         port=3306,
         user=usr,
         passwd=pwd,
-        db=dbase,
+        db=dbase
     )
 
 
@@ -62,7 +62,7 @@ def fetch_and_print_state(cursor, to_search):
     """
     query = """
     SELECT * FROM states
-    WHERE name LIKE BINARY {}
+    WHERE name BINARY LIKE {}
     ORDER BY id ASC;
     """.format(to_search)
 
