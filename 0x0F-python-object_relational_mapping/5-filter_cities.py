@@ -63,7 +63,7 @@ def fetch_and_print_cities(cursor, state_name):
     SELECT cities.id, cities.name, states.name
     FROM cities
     JOIN states ON cities.state_id = states.id
-    WHERE states.name BINARY LIKE '%s'
+    WHERE BINARY states.name='%s'
     ORDER BY cities.id ASC;
     """
 
