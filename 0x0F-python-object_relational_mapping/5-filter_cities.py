@@ -54,7 +54,7 @@ def fetch_and_print_cities(cursor, state_name):
         state_name (str): The name of the state to search for.
     """
     query = """SELECT cities.name FROM cities
-    INNER JOIN states ON states.id = cities.state_id
+    INNER JOIN states ON cities.state_id = states.id
     WHERE BINARY states.name=%s
     ORDER BY cities.id ASC
     """
@@ -62,8 +62,9 @@ def fetch_and_print_cities(cursor, state_name):
     cursor.execute(query, (state_name,))
     query_rows = cursor.fetchall()
     
-    result = ", ".join([row[0] for row in query_rows])
-    print(result, end="")
+    if query_rows:
+        result = ", ".join([row[0] for row in query_rows])
+        print(result)
     
 
 def main():
