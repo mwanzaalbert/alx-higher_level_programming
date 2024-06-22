@@ -16,16 +16,10 @@ def get_database_arguments():
 
     Returns_:
         tuple: A tuple containing the username, password, database name, and
-                the state name to search.
+                the state name to search respectively.
                If any argument is missing, it returns None for that argument.
     """
-    if len(sys.argv) >= 5:
-        usr = sys.argv[1]
-        pwd = sys.argv[2]
-        dbase = sys.argv[3]
-        to_search = sys.argv[4]
-
-    return usr, pwd, dbase, to_search
+    return sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 
 
 def connect_to_database(usr, pwd, dbase):
@@ -59,13 +53,9 @@ def fetch_and_print_cities(cursor, state_name):
         cursor (MySQLdb.cursors.Cursor): The cursor object to execute the query
         state_name (str): The name of the state to search for.
     """
-    query = """
-    SELECT cities.id, cities.name, states.name
-    FROM cities
-    JOIN states ON cities.state_id = states.id
-    WHERE BINARY states.name='%s'
-    ORDER BY cities.id ASC;
-    """
+    query = "SELECT cities.id, cities.name, states.name " + \
+        "FROM cities INNER JOIN states ON cities.state_id = states.id" + \
+        "WHERE BINARY states.name='%s' ORDER BY cities.id ASC"
 
     cursor.execute(query, (state_name,))
     query_rows = cursor.fetchall()
