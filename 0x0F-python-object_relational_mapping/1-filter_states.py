@@ -57,7 +57,9 @@ def fetch_and_print_states(cursor):
         cursor (MySQLdb.cursors.Cursor): The cursor object to execute the SQL
         query.
     """
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    query = "SELECT * FROM states WHERE name is NOT  NULL AND name LIKE \
+        'N%' ORDER BY id ASC"
+    cursor.execute(query)
     query_rows = cursor.fetchall()
     for row in query_rows:
         print(row)
