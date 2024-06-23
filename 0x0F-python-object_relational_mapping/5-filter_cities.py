@@ -55,20 +55,15 @@ def fetch_and_print_cities(cursor, state_name):
     """
     query = """SELECT cities.name FROM cities
     INNER JOIN states ON cities.state_id = states.id
-    WHERE BINARY states.name=%s AND cities.name IS NOT NULL
+    WHERE BINARY states.name=%s
     ORDER BY cities.id ASC
     """
 
     cursor.execute(query, (state_name,))
     query_rows = cursor.fetchall()
-    
-    print(", ".join([row[0] for row in query_rows if row]))
-#     for index, row in enumerate(query_rows):
-#         if index < len(query_rows) - 1:
-#             print(row[0], end=", ")
-#         else:
-#             print(row[0], end="\n")
-    
+
+    print(", ".join([row[0] for row in query_rows if row]), end="")
+
 
 def main():
     """Entry point of program to execute the database operations."""
