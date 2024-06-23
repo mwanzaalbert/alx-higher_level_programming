@@ -53,16 +53,21 @@ def fetch_and_print_cities(cursor, state_name):
         cursor (MySQLdb.cursors.Cursor): The cursor object to execute the query
         state_name (str): The name of the state to search for.
     """
-    query = """SELECT cities.name FROM cities
-    INNER JOIN states ON cities.state_id = states.id
-    WHERE BINARY states.name=%s
+    # query = """SELECT cities.name FROM cities
+    # JOIN states ON cities.state_id = states.id
+    # WHERE states.name=%s
+    # ORDER BY cities.id ASC
+    # """
+
+    query = """SELECT cities.name, states.name FROM cities
+    JOIN states ON cities.state_id = states.id
     ORDER BY cities.id ASC
     """
-
-    cursor.execute(query, (state_name,))
+    # cursor.execute(query, (state_name,))
+    cursor.execute(query)
     query_rows = cursor.fetchall()
 
-    print(", ".join([row[0] for row in query_rows if row]), end="")
+    print(", ".join([row[0] for row in query_rows if row[1] == state_name]))
 
 
 def main():
