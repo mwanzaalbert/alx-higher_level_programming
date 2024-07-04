@@ -6,8 +6,8 @@ This module provides a function to find a peak in a list of unsorted integers.
 
 The function `find_peak` uses a binary search approach to efficiently locate a
 peak element in the given list. A peak element is defined as an element that is
-greater than or equal to its neighbors (if they exist). If multiple peak elements
-exist, any one of them may be returned.
+greater than or equal to its neighbors (if they exist). If multiple peak
+elements exist, any one of them may be returned.
 
 Functions_:
     - find_peak(list_of_integers): Finds a peak in a list of unsorted integers.
@@ -37,39 +37,41 @@ Module notes_:
 
 def find_peak(list_of_integers):
     """
-    Finds a peak in a list of unsorted integers.
+    Find a peak in a list of unsorted integers.
 
     Args_:
         list_of_integers (list): A list of unsorted integers.
 
     Returns_:
-        int or None: The peak element in the list. If the list is empty, returns None.
-                     A peak element is defined as an element that is greater than or equal
-                     to its neighbors (if they exist).
+        int or None: The peak element in the list. If the list is empty,
+        returns None. A peak element is defined as an element that is greater
+        than or equal  to its neighbors (if they exist).
 
     Notes_:
-        - The function uses a binary search approach to find a peak efficiently.
-        - Multiple peak elements may exist, and any one of them can be returned.
+        - The function uses a binary search approach to find a peak efficiently
+        - Multiple peak elements may exist, and any one of them can be returned
     """
-    if not list_of_integers_:
+    if not list_of_integers:
         return None
-    
+
     left, right = 0, len(list_of_integers) - 1
-    
+
     while left < right:
         mid = (left + right) // 2
         if list_of_integers[mid] < list_of_integers[mid + 1]:
             left = mid + 1
         else:
             right = mid
-    
+
     return list_of_integers[left]
+
 
 # Testing the function with provided test cases
 if __name__ == "__main__":
     print(find_peak([1, 2, 4, 6, 3]))  # Output: 6
     print(find_peak([4, 2, 1, 2, 3, 1]))  # Output: 4 (or 3, both are peaks)
-    print(find_peak([2, 2, 2]))  # Output: 2 (any element can be a peak in this case)
+    print(find_peak([2, 2, 2]))  # Output: 2 (any element can be a peak)
     print(find_peak([]))  # Output: None (empty list)
     print(find_peak([-2, -4, 2, 1]))  # Output: 2
-    print(find_peak([4, 2, 1, 2, 2, 2, 3, 1]))  # Output: 4 (or 3, both are peaks)
+    print(find_peak([4, 2, 1, 2, 2, 2, 3, 1]))
+    # Output: 4 (or 3, both are peaks)
