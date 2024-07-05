@@ -1,18 +1,28 @@
 #!/usr/bin/python3
+"""Sends a search parameter to a URL."""
 import requests
 import sys
 
-url = "http://0.0.0.0:5000/search_user"
-q = sys.argv[1] if len(sys.argv) > 1 else ""
 
-response = requests.post(url, data={'q': q})
+def search_user(letter):
+    """Send a search parameter to a URL."""
+    url = 'http://0.0.0.0:5000/search_user'
+    data = {'q': letter}
+    response = requests.post(url, data=data)
 
-try:
-    json_response = response.json()
-    if json_response:
-        print("[{}] {}".format(json_response.get(
-            'id'), json_response.get('name')))
+    try:
+        json_data = response.json()
+        if json_data:
+            print(f"[{json_data['id']}] {json_data['name']}")
+        else:
+            print("No result")
+    except ValueError:
+        print("Not a valid JSON")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        letter = sys.argv[1]
     else:
-        print("No result")
-except ValueError:
-    print("Not a valid JSON")
+        letter = ""
+    search_user(letter)
