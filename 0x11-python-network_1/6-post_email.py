@@ -7,7 +7,8 @@ import sys
 def post_email(url, email):
     """Send a form data to a URL."""
     response = requests.post(url, data={'email': email})
-    print(f"Your email is: {response.text}")
+    print(response.text)
+    # print(f"Your email is: {response.text}")
 
 
 if __name__ == "__main__":
