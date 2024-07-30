@@ -7,7 +7,7 @@ const characterId = 18;
 request.get(apiUrl, (error, response, body) => {
   if (error) {
     console.error(error);
-  } else {
+  } else if (body){
     const data = JSON.parse(body);
     const films = data.results;
     let count = 0;
