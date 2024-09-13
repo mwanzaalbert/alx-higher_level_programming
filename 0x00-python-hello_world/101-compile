@@ -1,2 +1,18 @@
 #!/bin/bash
-python3 -m compileall -b $PYFILE
+# A script to compile a Python script from an environment variable
+
+# Check if PYFILE is set
+if [ -z "$PYFILE" ]; then
+  echo "Error: PYFILE environment variable is not set."
+  exit 1
+fi
+
+# Compile the Python file
+echo "Compiling $PYFILE ..."
+python3 -m py_compile "$PYFILE"
+
+# Move the compiled file to the desired output
+compiled_file="${PYFILE}c"
+mv "__pycache__/${PYFILE%.*}.cpython-*.pyc" "$compiled_file" 2>/dev/null
+
+# echo "Compilation complete: $compiled_file"
