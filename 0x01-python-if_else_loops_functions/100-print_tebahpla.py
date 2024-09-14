@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-i = 0
-for c in range(ord('z'), ord('a') - 1, -1):
-    print("{}".format(chr(c - i)), end="")
-    i = 32 if i == 0 else 0
+for i, letter in enumerate(list(chr(index) for index in range(ord("A"), ord('Z') + 1))[::-1]):
+    if i % 2 == 0:
+        print(letter.lower(), end='')
+    else:
+        print(letter, end='')
