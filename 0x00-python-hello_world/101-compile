@@ -7,12 +7,26 @@ if [ -z "$PYFILE" ]; then
   exit 1
 fi
 
-# Compile the Python file
+# Check if PYFILE has a .py extension
+if [[ "$PYFILE" != *.py ]]; then
+  echo "Error: PYFILE does not have a .py extension."
+  exit 1
+fi
+
+# Get the base filename without the extension
+BASENAME=$(basename "$PYFILE" .py)
+
 echo "Compiling $PYFILE ..."
-python3 -m py_compile "$PYFILE"
+# Compile the Python file and ensure the output is main.pyc
+python3 -c "import py_compile; py_compile.compile('$PYFILE', cfile='$BASENAME.pyc')" 
 
-# Move the compiled file to the desired output
-compiled_file="${PYFILE}c"
-mv "__pycache__/${PYFILE%.*}.cpython-*.pyc" "$compiled_file" 2>/dev/null
+# Verify if the compilation was successful
+# if [ $? -eq 0 ]; then
+#   echo "Compilation successful: $BASENAME.pyc created."
+# else
+#   echo "Compilation failed."
+#   exit 1
+# fi
 
-# echo "Compilation complete: $compiled_file"
+# Compile the Python file on the cmdline
+#python3 -m compileall -l -b -f main.py -d ./main.pyc
