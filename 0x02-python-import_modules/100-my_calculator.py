@@ -12,7 +12,6 @@ if __name__ == "__main__":
 
     operators = {"+": add, "-": sub, "*": mul, "/": div}
 
-    print(operators.keys())
     if sys.argv[2] not in list(operators.keys()):
         print("Unknown operator. Available operators: +, -, * and /")
         sys.exit(1)
