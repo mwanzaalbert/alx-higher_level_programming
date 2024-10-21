@@ -1,2 +1,32 @@
 #!/bin/bash
-python3 -m compileall -b $PYFILE
+# A script to compile a Python script from an environment variable
+
+# Check if PYFILE is set
+if [ -z "$PYFILE" ]; then
+  echo "Error: PYFILE environment variable is not set."
+  exit 1
+fi
+
+# Check if PYFILE has a .py extension
+if [[ "$PYFILE" != *.py ]]; then
+  echo "Error: PYFILE does not have a .py extension."
+  exit 1
+fi
+
+# Get the base filename without the extension
+BASENAME=$(basename "$PYFILE" .py)
+
+echo "Compiling $PYFILE ..."
+# Compile the Python file and ensure the output is main.pyc
+python3 -c "import py_compile; py_compile.compile('$PYFILE', cfile='$BASENAME.pyc')" 
+
+# Verify if the compilation was successful
+# if [ $? -eq 0 ]; then
+#   echo "Compilation successful: $BASENAME.pyc created."
+# else
+#   echo "Compilation failed."
+#   exit 1
+# fi
+
+# Compile the Python file on the cmdline
+#python3 -m compileall -l -b -f main.py -d ./main.pyc
