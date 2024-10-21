@@ -7,13 +7,12 @@ if __name__ == "__main__":
     count = len(sys.argv) - 1
 
     if count:
-        match(count):
-            case 1:
-                print(f"{count} argument:")
-            case _:
-                print(f"{count} arguments:")
+        if count > 1:
+            print(f"{count} arguments:")
+        else:
+            print(f"{count} argument:")
 
-                for index, argument in enumerate(sys.argv[1:]):
-                    print(f"{index + 1}: {argument}")
+        for index, argument in enumerate(sys.argv[1:]):
+            print(f"{index + 1}: {argument}")
     else:
         print(f"{count} arguments.")
