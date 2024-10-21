@@ -13,5 +13,5 @@ if __name__ == "__main__":
         case _:
             print(f"{count} arguments:")
 
-    for index, argument in enumerate(sys.argv[1:]):
-        print(f"{index + 1}: {argument}")
+            for index, argument in enumerate(sys.argv[1:]):
+                print(f"{index + 1}: {argument}")
