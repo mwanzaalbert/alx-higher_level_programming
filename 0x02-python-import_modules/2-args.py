@@ -5,13 +5,15 @@ if __name__ == "__main__":
     import sys
 
     count = len(sys.argv) - 1
-    match(count):
-        case 0:
-            print(f"{count} arguments.")
-        case 1:
-            print(f"{count} argument:")
-        case _:
-            print(f"{count} arguments:")
 
-            for index, argument in enumerate(sys.argv[1:]):
-                print(f"{index + 1}: {argument}")
+    if count:
+        match(count):
+            case 1:
+                print(f"{count} argument:")
+            case _:
+                print(f"{count} arguments:")
+
+                for index, argument in enumerate(sys.argv[1:]):
+                    print(f"{index + 1}: {argument}")
+    else:
+        print(f"{count} arguments.")
