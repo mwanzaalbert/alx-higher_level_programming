@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
 def element_at(my_list, idx):
-    if idx < 0 or idx >= len(my_list):
-        return ("None")
+    try:
+        assert idx in range(0, len(my_list))
+    except AssertionError:
+        return None
     else:
         return my_list[idx]
