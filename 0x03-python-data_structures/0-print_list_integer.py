@@ -34,11 +34,9 @@ def print_list_integer(my_list: List[int] = []) -> None:
         >>> print_list_integer([1, 2, "H", 9])
         Traceback (most recent call last):
             ...
-        ValueError: All elements must be integers.
+        ValueError: Unknown format code 'd' for object of type 'str'
     """
     for i in my_list:
-        if not isinstance(i, int):
-            raise ValueError("All elements must be integers.")
         print('{:d}'.format(i))
 
 
