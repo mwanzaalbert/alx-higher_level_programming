@@ -13,7 +13,3 @@ ALTER TABLE first_table
 MODIFY COLUMN name VARCHAR(256) 
 COLLATE 'utf8mb4_unicode_ci' 
 DEFAULT NULL;
-
--- Add the `score` column if it does not exist
-ALTER TABLE first_table 
-ADD COLUMN score INT DEFAULT NULL;
