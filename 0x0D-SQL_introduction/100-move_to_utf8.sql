@@ -1,7 +1,7 @@
 -- Set the default character set and collation for the database
 ALTER DATABASE hbtn_0c_0 
-DEFAULT CHARACTER SET 'utf8mb4' 
-DEFAULT COLLATE 'utf8mb4_unicode_ci';
+CHARACTER SET 'utf8mb4' 
+COLLATE 'utf8mb4_unicode_ci';
 
 -- Use the correct database
 USE hbtn_0c_0;
