@@ -1,6 +1,5 @@
---  a script that lists all shows contained in the database hbtn_0d_tvshows.
-SELECT tv_shows.title, tv_show_genres.genre_id
-  FROM tv_show_genres
-  RIGHT JOIN tv_shows
-  ON tv_shows.id = tv_show_genres.show_id
-  ORDER BY tv_shows.title, tv_show_genres.genre_id;
+-- Genre ID for all shows
+SELECT S.title, G.genre_id
+FROM tv_shows S
+LEFT JOIN tv_show_genres G ON G.show_id=S.id
+ORDER BY S.title, G.genre_id ASC;
