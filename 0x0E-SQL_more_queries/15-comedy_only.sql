@@ -1,9 +1,12 @@
---  a script that lists all Comedy shows in the database hbtn_0d_tvshows.
-SELECT tv_shows.title
-  FROM tv_shows
-  INNER JOIN tv_show_genres
-  ON tv_shows.id = tv_show_genres.show_id
-  INNER JOIN tv_genres
-  ON tv_show_genres.genre_id = tv_genres.id
-  WHERE tv_genres.name = "comedy"
-  ORDER BY tv_shows.title;
+-- Author: Albert Mwanza
+-- License: MIT License
+-- Version: 1.1
+-- Date: 2024-11-27
+
+-- List only comedy shows
+SELECT T.title
+FROM tv_shows T
+RIGHT JOIN tv_show_genres S ON S.show_id=T.id
+RIGHT JOIN tv_genres G ON G.id = S.genre_id
+WHERE G.name="Comedy"
+ORDER BY T.title;
