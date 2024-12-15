@@ -71,7 +71,7 @@ class Square:
         """Print the square with the # character."""
         if self.__size:
             for _ in range(self.__size):
-                print("_" * self.__position[0], end='')
+                print(" " * self.__position[0], end='')
                 # print("_" * self.__position[0] if self.__position[1]
                 #       else "_" * self.__position[0], end='')
                 # (print("_" * self.__position[1], end='')if self.__position[1]
