@@ -8,6 +8,7 @@ __license__ = "MIT"
 __date__ = "2024-12-15"
 __version__ = "1.1"
 
+
 class Square:
     """Does nothing."""
     pass
