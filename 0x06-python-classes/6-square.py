@@ -27,7 +27,16 @@ class Square:
         if size < 0:
             raise ValueError("size must be >= 0")
 
+        if (
+                not isinstance(position, tuple) or
+                len(position) != 2 or
+                not all(isinstance(num, int) for num in position) or
+                not all(num >= 0 for num in position)):
+
+            raise TypeError("position must be a tuple of 2 positive integers")
+
         self.__size = size
+
         self.__position = position
 
     @property
@@ -90,6 +99,11 @@ class Square:
 
 
 if __name__ == '__main__':
+    try:
+        my_square = Square(3, "Position")
+    except Exception as e:
+        print(e)
+
     my_square_1 = Square(3)
     my_square_1.my_print()
 
