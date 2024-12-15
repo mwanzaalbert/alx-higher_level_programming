@@ -10,16 +10,18 @@ __version__ = "1.1"
 
 
 class Square:
-    """Represents a square."""
+    """A class that represents a square."""
 
     def __init__(self, size):
         """Initialize a new Square.
-        Args:
+
+        Args_:
             size (int): The size of the new square.
         """
         self.__size = size
 
 
+# Test code
 if __name__ == '__main__':
     my_square = Square(3)
     print(type(my_square))

@@ -11,9 +11,11 @@ __version__ = "1.1"
 
 class Square:
     """Does nothing."""
+
     pass
 
 
+# Test code
 if __name__ == '__main__':
     my_square = Square()
     print(type(my_square))
