@@ -79,21 +79,13 @@ class Square:
     def my_print(self):
         """Print the square with the # character."""
         if self.__size:
-            for _ in range(self.__size):
-                print(" " * self.__position[0], end='')
-                # print("_" * self.__position[0] if self.__position[1]
-                #       else "_" * self.__position[0], end='')
-                # (print("_" * self.__position[1], end='')if self.__position[1]
-                #  else print("_" * self.__position[0], end=''))
-                # if self.__position[1]:
-                #     for _ in range(self.__position[1]):
-                #         print("_", end="")
-                # else:
-                #     for _ in range(self.__position[0]):
-                #         print("_", end="")
-                for _ in range(self.__size):
-                    print("#", end="")
+            # Print the vertical spacing
+            for _ in range(self.__position[1]):
                 print()
+
+            # Print the square
+            for _ in range(self.__size):
+                print(" " * self.__position[0] + "#" * self.__size)
         else:
             print()
 
@@ -103,6 +95,12 @@ if __name__ == '__main__':
         my_square = Square(3, "Position")
     except Exception as e:
         print(e)
+
+    try:
+        my_square = Square(3, (1, ))
+    except Exception as e:
+        print(e)
+    print("--")
 
     my_square_1 = Square(3)
     my_square_1.my_print()
@@ -118,6 +116,19 @@ if __name__ == '__main__':
     my_square_3.my_print()
 
     print("--")
+
+    my_square = Square(3, (0, 1))
+    my_square.my_print()
+
+    print("--")
+
+    my_square = Square(3, (0, 1))
+    my_square.my_print()
+    print("***")
+
+    my_square = Square(3, (1, 1))
+    my_square.my_print()
+    print("***")
 
     my_square = Square(5, (3, 2))
     my_square.my_print()
