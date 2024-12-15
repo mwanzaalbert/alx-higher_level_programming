@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-"""Define a class Square with coordinates setter and getter methods."""
+"""Define a class Square with print coordinates setter and getter methods."""
 
 __author__ = "Albert Mwanza"
 __license__ = "MIT"
@@ -78,16 +78,17 @@ class Square:
 
     def my_print(self):
         """Print the square with the # character."""
-        if self.__size:
-            # Print the vertical spacing
-            for _ in range(self.__position[1]):
-                print()
+        if self.__size == 0:
+            print("")
+            return
 
-            # Print the square
-            for _ in range(self.__size):
-                print(" " * self.__position[0] + "#" * self.__size)
-        else:
+        # Print the vertical spacing
+        for _ in range(self.__position[1]):
             print()
+
+        # Print the square
+        for _ in range(self.__size):
+            print(" " * self.__position[0] + "#" * self.__size)
 
 
 if __name__ == '__main__':
