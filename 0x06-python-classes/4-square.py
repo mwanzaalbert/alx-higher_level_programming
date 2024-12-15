@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-"""Define a class Square."""
+"""Define a class Square with setter and getter methods."""
 
 __author__ = "Albert Mwanza"
 __license__ = "MIT"

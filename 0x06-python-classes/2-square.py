@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-"""A module that defines a square."""
+"""Define a class Square with argumente validation."""
 
 __author__ = "Albert Mwanza"
 __license__ = "MIT"
@@ -23,6 +23,7 @@ class Square:
         """
         if not isinstance(size, int):
             raise TypeError('size must be an integer')
+
         if size < 0:
             raise ValueError('size must be >= 0')
 

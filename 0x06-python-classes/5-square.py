@@ -1,6 +1,12 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 
-"""Define a class Square."""
+"""Define a class Square with an instance method to print the square."""
+
+__author__ = "Albert Mwanza"
+__license__ = "MIT"
+__date__ = "2024-12-15"
+__version__ = "1.1"
 
 
 class Square:
