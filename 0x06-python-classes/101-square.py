@@ -79,7 +79,7 @@ class Square:
     def my_print(self):
         """Print the square with the # character."""
         if self.__size == 0:
-            print()
+            # print()
             return
 
         # Print the vertical spacing
@@ -109,3 +109,8 @@ if __name__ == '__main__':
 
     my_square = Square(5, (4, 1))
     print(my_square)
+    print("--")
+
+    my_square = Square(0, (10, 10))
+    print(my_square)
+    print("--")
