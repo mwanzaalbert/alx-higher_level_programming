@@ -71,8 +71,9 @@ class Square:
         """Print the square with the # character."""
         if self.__size:
             for _ in range(self.__size):
-                print(" " * self.__position[1] if self.__position[1]
-                      else " " * self.__position[0], end='')
+                print("_" * self.__position[0], end='')
+                # print("_" * self.__position[0] if self.__position[1]
+                #       else "_" * self.__position[0], end='')
                 # (print("_" * self.__position[1], end='')if self.__position[1]
                 #  else print("_" * self.__position[0], end=''))
                 # if self.__position[1]:
@@ -102,4 +103,8 @@ if __name__ == '__main__':
     my_square_3 = Square(3, (3, 0))
     my_square_3.my_print()
 
+    print("--")
+
+    my_square = Square(5, (3, 2))
+    my_square.my_print()
     print("--")
