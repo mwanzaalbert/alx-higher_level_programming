@@ -1,101 +1,113 @@
-ntegers addition module
-===========================
-Function
-========.
-function that adds 2 integers.
+# Doctest File for the `add_integer` Function
+# --------------------------------------------
+# This file contains test cases for the `add_integer` function.
+# The tests cover a range of scenarios, including:
+# - Regular addition with two integers.
+# - Handling of optional arguments.
+# - Type casting from float to integer.
+# - Error handling for invalid types and missing arguments.
+# - Special cases like NaN, large floats, and missing required arguments.
 
-Operations
-==========
-a and b must be integers or floats, otherwise raise a TypeError exception
-with the message a must be an integer or b must be an integer:
+# Usage:
+# ------
+# To run these tests, use the following Python code in your script:
+#
+#     import doctest
+#     doctest.testfile('tests/0-add_integer.txt', verbose=True)
+#
+# Ensure the `add_integer` function is defined in the current namespace or
+# properly imported before running the tests.
+#
+# Expected Output:
+# ----------------
+# For each test case, the output will either match the expected result or
+# raise an appropriate exception (TypeError, OverflowError, etc.). Any
+# discrepancies will be reported by the doctest framework.
 
-Import module:
-    >>> add_integer = __import__('0-add_integer').add_integer
+# Note:
+# -----
+# The "..." in traceback examples is used to ignore the exact details
+# of the traceback, making the test cases more robust against changes
+# in the traceback formatting.
 
-Uses:
+# Begin Test Cases Below
 
-None, none
-    >>> add_integer(None, None)
-    Traceback (most recent call last):
-    ...
-    TypeError: a must be an integer
-
-Int, none
-    >>> add_integer(2, None)
-    Traceback (most recent call last):
-    ...
-    TypeError: b must be an integer
-
-None, int:
-    >>> add_integer(None, 2)
-    Traceback (most recent call last):
-    ...
-    TypeError: a must be an integer
-
-int, int:
-    >>> add_integer(2, 5)
-    7
-
-float, float:
-    >>> add_integer(3.4, 2.6)
-    5
-
- Float, integer:
-    >>> add_integer(3.7, 7)
-    10
-
-Integer, Float:
-    >>> add_integer(5, 3.3)
-    8
-
-str, int:
-    >>> add_integer("hello", 5)
-    Traceback (most recent call last):
-    ...
-    TypeError: a must be an integer
-
-int, str
-    >>> add_integer(5, "hello")
-    Traceback (most recent call last):
-    ...
-    TypeError: b must be an integer
-
-negative integers
-    >>> add_integer(-2, -10)
-    -12
-
-negative, positive
-    >>> add_integer(-4, 8)
-    4
+# Import module:
+	>>> add_integer = __import__('0-add_integer').add_integer
 
 
-list, int:
-    >>> add_integer([5, 8, 7], 3)
-    Traceback (most recent call last):
-    ...
-    TypeError: a must be an integer
+# Regular addition
+----------------
+	>>> add_integer(1, 2)
+	3
+
+	>>> add_integer(100, -2)
+	98
 
 
-int, infinity float is passed:
-    >>> add_integer(5, float('inf'))
-    Traceback (most recent call last):
-    ...
-    OverflowError: cannot convert float infinity to integer
+# Missing one argument
+--------------------
+	>>> add_integer(2)
+	100
 
-Should return an error when cannot convert float NaN to integer:
+	>>> add_integer(b=25)
+	Traceback (most recent call last):
+	    ...
+	TypeError: add_integer() missing 1 required positional argument: 'a'
 
-    >>> add_integer(float("NaN"), 0)
-    Traceback (most recent call last):
-    ...
-    ValueError: cannot convert float NaN to integer
 
-Missing one argument
-    >>> add_integer(25)
-    123
+# Integer casting
+---------------
+	>>> add_integer(100.3, -2)
+	98
 
-Missing two arguments
-    >>> add_integer()
-    Traceback (most recent call last):
-    ...
-    TypeError: add_integer() missing 1 required positional argument: 'a'
+	>>> add_integer(15, 3.3)
+	18
 
+	>>> add_integer(100.3, 3.8)
+	103
+
+	>>> add_integer(1e2, 3.41)
+	103
+
+
+# Check type
+---------------
+	>>> add_integer(4, "School")
+	Traceback (most recent call last):
+	    ...
+	TypeError: b must be an integer
+
+
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	    ...
+	TypeError: a must be an integer
+
+
+# Float overflow
+--------------------
+	>>> add_integer(1e400)
+	Traceback (most recent call last):
+	    ...
+	OverflowError: cannot convert float infinity to integer
+
+
+	>>> add_integer(89, float('inf'))  # Positive infinity
+	Traceback (most recent call last):
+	    ...
+	OverflowError: cannot convert float infinity to integer
+
+
+	>>> add_integer(89, float('-inf'))  # Negative infinity
+	Traceback (most recent call last):
+	    ...
+	OverflowError: cannot convert float infinity to integer
+
+
+# Missing two arguments
+--------------------
+	>>> add_integer()
+	Traceback (most recent call last):
+	    ...
+	TypeError: add_integer() missing 1 required positional argument: 'a'

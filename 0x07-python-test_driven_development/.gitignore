@@ -1,0 +1,9 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+
+# Other commonly ignored files
+*.log
+*.db
+*.bak
+*.swp
