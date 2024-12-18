@@ -37,7 +37,7 @@
 
 
 # Regular addition
-----------------
+------------------
 	>>> add_integer(1, 2)
 	3
 
@@ -46,7 +46,7 @@
 
 
 # Missing one argument
---------------------
+----------------------
 	>>> add_integer(2)
 	100
 
@@ -57,7 +57,7 @@
 
 
 # Integer casting
----------------
+-----------------
 	>>> add_integer(100.3, -2)
 	98
 
@@ -72,7 +72,7 @@
 
 
 # Check type
----------------
+------------
 	>>> add_integer(4, "School")
 	Traceback (most recent call last):
 	    ...
@@ -86,7 +86,7 @@
 
 
 # Float overflow
---------------------
+----------------
 	>>> add_integer(1e400)
 	Traceback (most recent call last):
 	    ...
@@ -106,8 +106,16 @@
 
 
 # Missing two arguments
---------------------
+-----------------------
 	>>> add_integer()
 	Traceback (most recent call last):
 	    ...
 	TypeError: add_integer() missing 1 required positional argument: 'a'
+
+
+# Cannot convert float NaN to integer
+-------------------------------------
+	>>> add_integer(89, float("NaN"))
+	Traceback (most recent call last):
+	    ...
+	ValueError: cannot convert float NaN to integer
