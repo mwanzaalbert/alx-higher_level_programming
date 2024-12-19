@@ -1,27 +1,52 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 """
-Print a text with 2 new lines after
-each of these characters
-. ? :
+text_indentation module.
+
+This module provides a function to format text by adding two newlines
+after each occurrence of specific punctuation characters: '.', ':', and '?'.
+
+Function_:
+    text_indentation(text):
+        Formats the input text by inserting two newlines after each of the
+        specified delimiters ('.', ':', '?'). Consecutive spaces after the
+        delimiters are ignored.
+
+Raises_:
+    TypeError: If the input is not a string.
 """
+
+__author__ = "Albert Mwanza"
+__license__ = "MIT"
+__date__ = "2024-12-19"
+__version__ = "1.1"
 
 
 def text_indentation(text):
+    """
+    Format the input text by adding two newlines after each `.`, `:`, or `?`.
 
-    flag = True
-    delimiters = ['?', '.', ':']
+    Args_:
+        text (str): The text to format.
 
+    Raises_:
+        TypeError: If the input is not a string.
+    """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    for ch in text:
-        if ch == ' ' and flag is True:
-            continue
+    delimiters = {'.', '?', ':'}  # Use a set for faster lookups
+    formatted_text = ""
+    skip_space = False
 
+    for ch in text:
+        if skip_space and ch == ' ':
+            continue
+        skip_space = False
+
+        formatted_text += ch
         if ch in delimiters:
-            print("{}".format(ch), end="")
-            print("\n")
-            flag = True
-        else:
-            print(ch, end="")
-            flag = False
+            formatted_text += "\n\n"
+            skip_space = True
+
+    print(formatted_text.strip())
