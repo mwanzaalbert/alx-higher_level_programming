@@ -1,41 +1,81 @@
-3-say_my_name
-===========================
-Function
-========.
-function that prints my name is first name last name
+"""
+Test Suite for `say_my_name` Function
 
-Operations
-==========
-first name and last name must be strings
+This file contains test cases for the `say_my_name` function, which prints a person's 
+name in the format "My name is <first_name> <last_name>". The function enforces type 
+checks on its inputs and handles cases where only the first name is provided.
 
-Import module:
-    >>> my_name = __import__('3-say_my_name').say_my_name
+Function Under Test:
+---------------------
+- say_my_name(first_name, last_name=""): Prints the full name of a person. 
+  Ensures both `first_name` and `last_name` are strings.
 
-Uses:
+Testing Includes:
+------------------
+1. **Valid Inputs:**
+    - First name and last name are both provided as strings.
+    - Only the first name is provided.
 
-Strings:
-    >>> my_name("Juan", "Perez")
-    My name is Juan Perez
+2. **Invalid Inputs:**
+    - `first_name` is not a string.
+    - `last_name` is not a string.
+    - `first_name` is missing.
+    - Both arguments are missing.
 
-Diferent from string:
-    >>> my_name(12, "Perez")
-    Traceback (most recent call last):
-    ...
-    TypeError: first_name must be a string
+3. **Error Handling:**
+    - Ensures proper error messages are raised for invalid inputs.
+    - Verifies `TypeError` for missing or incorrectly typed arguments.
 
-Diferent from string:
-    >>> my_name("Juan", 12)
-    Traceback (most recent call last):
-    ...
-    TypeError: last_name must be a string
+Usage:
+------
+Run this test file using `doctest`:
+    $ python -m doctest -v <test_file_name.py>
 
-Empty:
-    >>> my_name()
-    Traceback (most recent call last):
-    ...
-    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+Author:
+-------
+Albert Mwanza
 
-one parameter
-    >>> my_name("Juan")
-    My name is Juan 
+Date:
+-----
+2024-12-19
+"""
 
+# Import module:
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Test Cases:
+-----------
+1. **Valid Cases:**
+    >>> say_my_name("John", "Smith")
+    My name is John Smith
+
+    >>> say_my_name("Walter", "White")
+    My name is Walter White
+
+    >>> say_my_name("Bob")
+    My name is Bob
+
+2. **Invalid Cases:**
+    - Non-string `first_name`:
+        >>> say_my_name(12, "White")
+        Traceback (most recent call last):
+            ...
+        TypeError: first_name must be a string
+
+    - Non-string `last_name`:
+        >>> say_my_name("White", 12)
+        Traceback (most recent call last):
+            ...
+        TypeError: last_name must be a string
+
+    - Missing `first_name`:
+        >>> say_my_name(last_name="White")
+        Traceback (most recent call last):
+            ...
+        TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+    - Missing both arguments:
+        >>> say_my_name()
+        Traceback (most recent call last):
+            ...
+        TypeError: say_my_name() missing 1 required positional argument: 'first_name'
