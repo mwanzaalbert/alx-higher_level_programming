@@ -22,17 +22,26 @@ Notes:
 
 Test Cases:
 -----------
-1. **Basic Input:**
-    Verify that the function correctly formats text with delimiters.
-    >>> text_indentation("Hello. How are you? I'm fine: thanks.")
-    Hello.
-    <BLANKLINE>
-    How are you?
-    <BLANKLINE>
-    I'm fine:
-    <BLANKLINE>
-    thanks.
+1. **Simple Text:**
+    Check cases with and without delimiters.
+    >>> text_indentation('Holberton School')
+    Holberton School
 
+    >>> text_indentation('Holberton.School')
+    Holberton.
+    <BLANKLINE>
+    School
+
+    >>> text_indentation('Holberton. School? How are you: John')
+    Holberton.
+    <BLANKLINE>
+    School?
+    <BLANKLINE>
+    How are you:
+    <BLANKLINE>
+    John
+
+    
 2. **Multiline Text:**
 	>>> text ="""Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
 	... Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? \
@@ -74,26 +83,8 @@ Test Cases:
 	<BLANKLINE>
 	Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres
 
-3. **Simple Text:**
-    Check cases with and without delimiters.
-    >>> text_indentation('Holberton School')
-    Holberton School
 
-    >>> text_indentation('Holberton.School')
-    Holberton.
-    <BLANKLINE>
-    School
-
-    >>> text_indentation('Holberton. School? How are you: John')
-    Holberton.
-    <BLANKLINE>
-    School?
-    <BLANKLINE>
-    How are you:
-    <BLANKLINE>
-    John
-
-4. **Invalid Input:**
+3. **Invalid Input:**
     Verify the function raises appropriate errors for non-string inputs or missing arguments.
     >>> text_indentation(12)
     Traceback (most recent call last):
