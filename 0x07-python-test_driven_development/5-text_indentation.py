@@ -39,13 +39,13 @@ def text_indentation(text):
     formatted_text = ""
     skip_space = False
 
-    for ch in text:
-        if skip_space and ch == ' ':
+    for char in text:
+        if skip_space and char.isspace():
             continue
         skip_space = False
 
-        formatted_text += ch
-        if ch in delimiters:
+        formatted_text += char
+        if char in delimiters:
             formatted_text += "\n\n"
             skip_space = True
 
