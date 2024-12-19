@@ -1,70 +1,155 @@
-x_divided
-===========================
-Function
-========.
-function that divides 2 elements of a matrix.
+"""
+Test Suite for `matrix_divided` function.
 
-Operations
-==========
-All elements of the matrix should be divided by
-div, rounded to 2 decimal places
+This file contains test cases for the `matrix_divided` function, which divides 
+all elements of a matrix by a specified divisor. The function is tested with a 
+variety of inputs to validate its correctness and error handling.
 
-Import module:
-    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+Function Under Test:
+---------------------
+- matrix_divided(matrix, div): Divides all elements of the matrix by `div` and 
+  returns a new matrix with the results rounded to two decimal places. The function 
+  enforces strict type checking and validates the input matrix.
 
-Uses:
+Testing Includes:
+------------------
+1. Valid inputs:
+    - List of lists containing integers or floats.
+    - Positive, negative, and floating-point divisors.
+    - Handling of floating-point precision.
 
-matrix of ints:
-    >>> matrix_divided([[1, 2, 3],[4, 5, 6]], 3)
-    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+2. Invalid inputs:
+    - Matrix containing non-numeric elements.
+    - Rows of different sizes in the matrix.
+    - Non-list matrix (e.g., tuple or other types).
+    - Non-numeric divisors (e.g., strings).
+    - Division by zero.
 
-divided by a float:
-    >>> matrix_divided([[1, 2, 3],[4, 5, 6]], 2.7)
-    [[0.37, 0.74, 1.11], [1.48, 1.85, 2.22]]
+3. Special cases:
+    - Handling of float('inf') and float('NaN') in the matrix and divisor.
+    - Empty matrix.
 
-divide by zero:
-    >>> matrix_divided([[1, 2, 3],[4, 5, 6]], 0)
-    Traceback (most recent call last):
+Usage:
+------
+Run this test file using `doctest`:
+    $  python3 -m doctest -v ./tests/2-matrix_divided.txt
+
+Each test case is structured with clear input and expected output, and errors are 
+validated against expected exceptions and messages.
+
+Author:
+-------
+Albert Mwanza
+
+Date:
+-----
+2024-12-19
+"""
+
+# Import module:
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+# Define a sample matrix
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+
+# Test cases for valid inputs
+# matrix = List of Lists of integers / div = integer
+----------------------------------------------------
+>>> print(matrix_divided(matrix, 3))
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+>>> print(matrix_divided(matrix, -2))
+[[-0.5, -1.0, -1.5], [-2.0, -2.5, -3.0]]
+
+# matrix = List of Lists of integers / div = float
+----------------------------------------------------
+>>> print(matrix_divided([[1, 2, 3], [4, 5, 6]], 0.5))
+[[2.0, 4.0, 6.0], [8.0, 10.0, 12.0]]
+
+# matrix = List of Lists of floats / div = integer
+----------------------------------------------------
+>>> print(matrix_divided([[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]], 2))
+[[0.17, 0.34, 0.5], [0.67, 0.83, 1.0]]
+
+# matrix = List of Lists of floats / div = float
+----------------------------------------------------
+>>> print(matrix_divided([[0.17, 0.34, 0.5], [0.67, 0.83, 1.0]], 0.5))
+[[0.34, 0.68, 1.0], [1.34, 1.66, 2.0]]
+
+# Test cases for invalid inputs
+# matrix = List of Lists of integers / div = 0
+----------------------------------------------------
+>>> print(matrix_divided(matrix, 0))
+Traceback (most recent call last):
     ...
-    ZeroDivisionError: division by zero
+ZeroDivisionError: division by zero
 
-non - matrix
-    >>> matrix_divided("Hello", 2)
-    Traceback (most recent call last):
+# matrix = List of Lists of integers / div = string
+----------------------------------------------------
+>>> print(matrix_divided(matrix, '3'))
+Traceback (most recent call last):
     ...
-    TypeError: matrix must be a matrix (list of lists) of integers/floats
+TypeError: div must be a number
 
-divide by negative number
- >>> matrix_divided([[1, 2, 3],[4, 5, 6]], -1)
- [[-1.0, -2.0, -3.0], [-4.0, -5.0, -6.0]]
-
-Test case dividing by string
-    >>> matrix_divided([[1, 2, 3],[4, 5, 6]], "hello")
-    Traceback (most recent call last):
+# matrix = not a list of lists / div = integer
+----------------------------------------------------
+>>> print(matrix_divided(tuple(matrix), 3))
+Traceback (most recent call last):
     ...
-    TypeError: div must be a number
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-
-Test matrix with different size
-    >>> matrix_divided([[1, 2, 3],[4, 5]], 1)
-    Traceback (most recent call last):
+# matrix contains a non-numeric element
+----------------------------------------------------
+>>> print(matrix_divided([[1, 2, 3], [4, 5, '6']], 3))
+Traceback (most recent call last):
     ...
-    TypeError: Each row of the matrix must have the same size
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-
-Div = float(inf)
-    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], float('inf'))
-    [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
-
-Missing two argum
-    >>> matrix_divided()
-    Traceback (most recent call last):
+# matrix rows have different sizes
+----------------------------------------------------
+>>> print(matrix_divided([[1, 2, 3], [4, 5]], 3))
+Traceback (most recent call last):
     ...
-    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+TypeError: Each row of the matrix must have the same size
 
-Missing one argument
-    >>> matrix_divided([[1, 2, 3], [4, 5, 6]])
-    Traceback (most recent call last):
+# Missing arguments
+----------------------------------------------------
+>>> print(matrix_divided(div=3))
+Traceback (most recent call last):
     ...
-    TypeError: matrix_divided() missing 1 required positional argument: 'div'
+TypeError: matrix_divided() missing 1 required positional argument: 'matrix'
 
+>>> print(matrix_divided())
+Traceback (most recent call last):
+    ...
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+# Test cases with floats (inf/nan)
+# matrix = contains float('inf') / div = float('inf')
+----------------------------------------------------
+>>> print(matrix_divided([[1, 2, 3], [4, float('inf'), 3]], float('inf')))
+[[0.0, 0.0, 0.0], [0.0, nan, 0.0]]
+
+>>> print(matrix_divided([[1, 2, 3], [4, float('inf'), 3]], float('NaN')))
+[[nan, nan, nan], [nan, nan, nan]]
+
+>>> print(matrix_divided([[1, 2, 3], [4, float('NaN'), 3]], float('inf')))
+[[0.0, 0.0, 0.0], [0.0, nan, 0.0]]
+
+# matrix = contains float('nan') / div = integer
+----------------------------------------------------
+>>> print(matrix_divided([[1, 2, 3], [4, float('NaN'), 3]], 3))
+[[0.33, 0.67, 1.0], [1.33, nan, 1.0]]
+
+>>> print(matrix_divided([[1, 2, 3], [4, float('inf'), 3]], 3))
+[[0.33, 0.67, 1.0], [1.33, inf, 1.0]]
+
+# matrix = list of integers / div = float('inf')
+----------------------------------------------------
+>>> print(matrix_divided([[1, 2, 3], [4, 5, 6]], float("inf")))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+# Empty matrix
+----------------------------------------------------
+>>> print(matrix_divided([], 3))
+[]
