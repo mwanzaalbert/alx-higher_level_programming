@@ -53,7 +53,7 @@ Test Cases:
     My name is Walter White
 
     >>> say_my_name("Bob")
-    My name is Bob
+    My name is Bob 
 
 2. **Invalid Cases:**
     - Non-string `first_name`:
