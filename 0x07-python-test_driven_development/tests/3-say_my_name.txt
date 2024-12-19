@@ -29,7 +29,7 @@ Testing Includes:
 Usage:
 ------
 Run this test file using `doctest`:
-    $ python -m doctest -v <test_file_name.py>
+    $ python -m doctest -v ./tests/3-say_my_name.txt
 
 Author:
 -------
