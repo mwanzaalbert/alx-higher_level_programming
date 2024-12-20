@@ -3,8 +3,9 @@
 """
 The module defines the `Rectangle` class.
 
-The class  models a rectangle with properties for width and height,
-including validation, and methods to calculate its area and perimeter..
+The class models a rectangle with properties for width and height,
+methods to calculate its area and perimeter, and a string representation
+using the `#` character.
 """
 
 __author__ = "Albert Mwanza"

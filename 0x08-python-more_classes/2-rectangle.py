@@ -3,7 +3,7 @@
 """
 The module defines the `Rectangle` class.
 
-The class  models a rectangle with properties for width and height,
+The class models a rectangle with properties for width and height,
 including validation, and methods to calculate its area and perimeter..
 """
 
