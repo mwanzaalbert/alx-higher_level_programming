@@ -10,7 +10,7 @@ including validation.
 __author__ = "Albert Mwanza"
 __license__ = "MIT"
 __date__ = "2024-12-20"
-__version__ = "1.0"
+__version__ = "1.1"
 
 
 class Rectangle:
@@ -108,8 +108,10 @@ class Rectangle:
         """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
+
         if value < 0:
             raise ValueError("height must be >= 0")
+
         self.__height = value
 
 
