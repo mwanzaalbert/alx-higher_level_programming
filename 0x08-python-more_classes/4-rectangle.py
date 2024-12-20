@@ -164,7 +164,7 @@ class Rectangle:
         Returns_:
             str: A string in the format "Rectangle(width, height)".
         """
-        return f"Rectangle({self.__width},{self.__height})"
+        return f"Rectangle({self.width}, {self.height})"
 
 
 if __name__ == "__main__":
@@ -191,3 +191,22 @@ if __name__ == "__main__":
 
     print(new_rectangle is my_rectangle)
     print(type(new_rectangle) is type(my_rectangle))
+
+    print("**")
+    my_rectangle = Rectangle(2, 4)
+    my_rectangle_rep = repr(my_rectangle)
+
+    new_rectangle = eval(my_rectangle_rep)
+    print(repr(new_rectangle))
+
+    print("**")
+    my_rectangle = Rectangle(2, 4)
+    print(str(my_rectangle))
+    print(repr(my_rectangle))
+    print(my_rectangle)
+
+    my_rectangle = Rectangle(2, 4)
+    my_rectangle_rep = repr(my_rectangle)
+
+    new_rectangle = eval(my_rectangle_rep)
+    print(new_rectangle)
