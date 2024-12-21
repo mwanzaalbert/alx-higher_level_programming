@@ -10,7 +10,7 @@ for debugging and printing and deleting a Rectangle instance.
 
 __author__ = "Albert Mwanza"
 __license__ = "MIT"
-__date__ = "2024-12-20"
+__date__ = "2024-12-21"
 __version__ = "1.1"
 
 
