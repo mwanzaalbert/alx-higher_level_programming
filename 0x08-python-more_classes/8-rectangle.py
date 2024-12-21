@@ -5,7 +5,8 @@ The module defines the `Rectangle` class.
 
 The class models a rectangle with properties for width and height,
 methods to calculate its area and perimeter, string representations
-for debugging and printing and deleting a Rectangle instance.
+for debugging and printing, deleting a Rectangle instance and a static method
+to compare two Rectangle instances.
 """
 
 __author__ = "Albert Mwanza"
