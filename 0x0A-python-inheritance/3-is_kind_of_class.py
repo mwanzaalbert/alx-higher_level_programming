@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-"""The module defines a class and inherited class-checking function."""
+"""The module defines a class class-checking function."""
 
 
 def is_kind_of_class(obj, a_class):
