@@ -1,26 +1,13 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
-"""
-LockedClass module.
-
-This module defines the LockedClass, a class that restricts the user
-from dynamically creating new instance attributes except for
-`first_name`.
-"""
-
-__author__ = "Albert Mwanza"
-__license__ = "MIT"
-__date__ = "2024-12-21"
-__version__ = "1.1"
+"""Defines a locked class."""
 
 
 class LockedClass:
     """
-    Prevent dynamic creation of new instance attributes,
-    except for 'first_name'.
+    Prevent the user from instantiating new LockedClass attributes
+    for anything but attributes called 'first_name'.
     """
-
-    __slots__ = ['first_name']
+    __slots__ = ["first_name"]
 
 
 if __name__ == "__main__":
@@ -31,7 +18,7 @@ if __name__ == "__main__":
     except Exception as e:
         print("[{}] {}".format(e.__class__.__name__, e))
 
-    # print(lc.dict)
+    print(lc.dict)
 
     try:
         lc.last_name = "Snow"
