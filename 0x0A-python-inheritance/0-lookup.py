@@ -1,8 +1,36 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
+"""The module defines an object attribute lookup function."""
 
-"""Defines an object attribute lookup function."""
+
+def lookup(obj) -> list:
+    """
+    Return a list of an object's available attributes and methods.
+
+    Args_:
+        obj (Any): The object whose attributes and methods are to be retrieved.
+
+    Returns_:
+        List[str]: A list of names of the object's attributes and methods.
+    """
+    return dir(obj)
 
 
-def lookup(obj):
-    """Return a list of an object's available attributes."""
-    return (dir(obj))
+if __name__ == "__main__":
+    class MyClass1(object):
+        """Empty class."""
+
+        pass
+
+    class MyClass2(object):
+        """A class with attributes."""
+
+        my_attr1 = 3
+
+        def my_meth(self):
+            """Define a class method."""
+            pass
+
+    print(lookup(MyClass1))
+    print(lookup(MyClass2))
+    print(lookup(int))
