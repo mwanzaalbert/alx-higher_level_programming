@@ -12,6 +12,11 @@ An empty class BaseGeometry is also provided to serve as a foundation for
 other geometric shapes.
 """
 
+__author__ = "Albert Mwanza"
+__license__ = "MIT"
+__date__ = "2024-12-22"
+__version__ = "1.1"
+
 
 class BaseGeometry:
     """Abstract class for geometric shapes."""
