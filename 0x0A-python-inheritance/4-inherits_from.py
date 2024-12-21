@@ -2,6 +2,11 @@
 # -*- coding: utf-8 -*-
 """The module defines an inheritance class-checking function."""
 
+__author__ = "Albert Mwanza"
+__license__ = "MIT"
+__date__ = "2024-12-21"
+__version__ = "1.1"
+
 
 def inherits_from(obj, a_class):
     """

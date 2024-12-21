@@ -1,12 +1,16 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-
 """
 The module defines a custom list class `MyList`.
 
 The class extends the built-in `list` class. It includes a method to print
 the elements of the list in sorted order.
 """
+
+__author__ = "Albert Mwanza"
+__license__ = "MIT"
+__date__ = "2024-12-21"
+__version__ = "1.1"
 
 
 class MyList(list):

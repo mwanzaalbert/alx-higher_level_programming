@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-
 """The module defines a class-checking function."""
+
+__author__ = "Albert Mwanza"
+__license__ = "MIT"
+__date__ = "2024-12-21"
+__version__ = "1.1"
 
 
 def is_same_class(obj, a_class):

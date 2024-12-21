@@ -2,6 +2,11 @@
 # -*- coding: utf-8 -*-
 """The module defines a class class-checking function."""
 
+__author__ = "Albert Mwanza"
+__license__ = "MIT"
+__date__ = "2024-12-21"
+__version__ = "1.1"
+
 
 def is_kind_of_class(obj, a_class):
     """
