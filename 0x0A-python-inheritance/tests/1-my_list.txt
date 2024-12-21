@@ -1,108 +1,81 @@
-============================
- Module for ``1-my_list.py``
-============================
-This is a doctest file to test the above module
+"""
+Test File for the `MyList` Class
 
-====================
- Usage instructions
-====================
+This test file contains doctests to validate the functionality of the 
+`MyList` class. The class extends the built-in `list` type by adding 
+a `print_sorted` method that prints the elements of the list in ascending 
+sorted order while preserving the original list.
 
-Import ``MyList`` from the ``1-my_list`` module:
+Usage:
+    To run the tests, use the following command:
+    $ python3 -m doctest -v mylist_tests.txt
 
+Notes:
+------
+- This file tests standard operations like list creation, appending, 
+  and printing.
+- The `print_sorted` method is tested for both standard and edge cases, 
+  including handling of negative numbers and an empty list.
+- Use `doctest` to ensure correctness and validate behavior.
+
+Author:
+-------
+Albert Mwanza
+
+Date:
+-----
+2024-12-21
+"""
+
+# Import module:
 >>> MyList = __import__('1-my_list').MyList
       
 
-Now use it:
-================
-Expected Success
-================
+>>> # Case: Class creation and regular print
+>>> my_list = MyList()
+>>> print(my_list)
+[]
 
->>> my_list = MyList([5, 6, 7, 8])
->>> print(my_list)  #doctest: +NORMALIZE_WHITESPACE
-[5, 6, 7, 8]
->>> my_list.print_sorted()  #doctest: +NORMALIZE_WHITESPACE
-    [5, 6, 7, 8]
+>>> # Case: Append and regular print
+>>> my_list.append(10)
+>>> print(my_list)
+[10]
 
->>> my_list1 = MyList([9, 6, 4, 1])
->>> print(my_list1) #doctest: +NORMALIZE_WHITESPACE
-    [9, 6, 4, 1]
+>>> # Case: Append, regular print, and sorted print
+>>> my_list.append(3)
+>>> print(my_list)
+[10, 3]
+>>> my_list.print_sorted()
+[3, 10]
 
->>> my_list1.print_sorted() #doctest: +NORMALIZE_WHITESPACE
-    [1, 4, 6, 9]
+>>> # Case: Multiple appends, regular print, and sorted print
+>>> my_list.append(5)
+>>> my_list.append(1)
+>>> print(my_list)
+[10, 3, 5, 1]
+>>> my_list.print_sorted()
+[1, 3, 5, 10]
 
->>> my_list2 = MyList([5, 8, 2, 0])
->>> print(my_list2) #doctest: +NORMALIZE_WHITESPACE
-    [5, 8, 2, 0]
->>> my_list2.print_sorted()   #doctest: +NORMALIZE_WHITESPACE
-    [0, 2, 5, 8]
+>>> # Case: Append with negative numbers
+>>> my_list.append(-2)
+>>> print(my_list)
+[10, 3, 5, 1, -2]
+>>> my_list.print_sorted()
+[-2, 1, 3, 5, 10]
 
- # int list: descending order
- >>> my_list1 = MyList([9, 6, 4, 1]) 
- >>> print(my_list1)  #doctest: +NORMALIZE_WHITESPACE
- [9, 6, 4, 1]
- >>> my_list1.print_sorted()  #doctest: +NORMALIZE_WHITESPACE
- [1, 4, 6, 9]
+>>> # Case: Inheritance check
+>>> isinstance(my_list, list)
+True
 
- # int list: mixed order
- >>> my_list2 = MyList([5, 8, 2, 0])
- >>> print(my_list2)  #doctest: +NORMALIZE_WHITESPACE
- [5, 8, 2, 0]
- >>> my_list2.print_sorted()  #doctest: +NORMALIZE_WHITESPACE
- [0, 2, 5, 8]
+>>> # Case: Empty list and sorted print
+>>> empty_list = MyList()
+>>> empty_list.print_sorted()
+[]
 
- # Bool list
- >>> bool_list = MyList([True, False])
- >>> print(bool_list) #doctest: +NORMALIZE_WHITESPACE
- [True, False]
- >>> bool_list.print_sorted()  #doctest: +NORMALIZE_WHITESPACE
- [False, True]
-
- 
-
-===================
- Expected failures
-===================
->>> not_list = MyList(['hi', 'oh dear'])
->>> print(not_list)  #doctest: +NORMALIZE_WHITESPACE
-    ['hi', 'oh dear'] 
->>> not_list.print_sorted()  #doctest: +NORMALIZE_WHITESPACE
-    ['hi', 'oh dear']
-
-# list is tuples
- >>> not_list1 = MyList([(4, 3), (4, 5)])  #doctest: +NORMALIZE_WHITESPACE
- >>> print(not_list1)  #doctest: +NORMALIZE_WHITESPACE
-     [(4, 3), (4, 5)]
- >>> not_list1.print_sorted()  #doctest: +NORMALIZE_WHITESPACE
-    [(4, 3), (4, 5)]
-
-================
-Check docstrings
-================
->>> print(__import__("1-my_list").__doc__) #doctest: +NORMALIZE_WHITESPACE
-<BLANKLINE>
-This is module 1-my_list
-<BLANKLINE>
-This module contains one class and one public instance method
-<BLANKLINE>
-Access test for this class in /tests subfolder - to run:
-`python 3 -m doctest ./tests/1-my_list.txt`
-<BLANKLINE>
-
->>> print(__import__("1-my_list").MyList.__doc__) #doctest: +NORMALIZE_WHITESPACE
-<BLANKLINE>
-    inherits from `list`
-<BLANKLINE>
-    Public instance method:
-    `def print_sorted(self):`
-<BLANKLINE>
-    Args:
-    list
-<BLANKLINE>
-    Returns:
-    prints to stdout list sorted by ascending order
-<BLANKLINE>
-
->>> print(__import__("1-my_list").MyList.print_sorted.__doc__) #doctest: +NORMALIZE_WHITESPACE
-<BLANKLINE>
-    prints the list, but sorted (ascending sort)
-<BLANKLINE>
+>>> # Case: Check `print_sorted` does not modify original list
+>>> print(my_list)
+[10, 3, 5, 1, -2]
+>>> my_list.print_sorted()
+[-2, 1, 3, 5, 10]
+>>> print(my_list)
+[10, 3, 5, 1, -2]
