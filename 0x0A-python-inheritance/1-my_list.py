@@ -27,24 +27,21 @@ class MyList(list):
 
 
 if __name__ == "__main__":
-    # # Create an instance of MyList
-    # my_list = MyList()
+    # Create an instance of MyList
+    my_list = MyList()
 
-    # # Append elements to the list
-    # my_list.append(1)
-    # my_list.append(4)
-    # my_list.append(2)
-    # my_list.append(3)
-    # my_list.append(5)
+    # Append elements to the list
+    my_list.append(1)
+    my_list.append(4)
+    my_list.append(2)
+    my_list.append(3)
+    my_list.append(5)
 
-    # # Print the original list
-    # print(my_list)
+    # Print the original list
+    print(my_list)
 
-    # # Print the sorted version of the list
-    # my_list.print_sorted()
+    # Print the sorted version of the list
+    my_list.print_sorted()
 
-    # # Print the original list again to show it remains unchanged
-    # print(my_list)
-
-    import doctest
-    doctest.testfile('tests/1-my_list.txt', verbose=True)
+    # Print the original list again to show it remains unchanged
+    print(my_list)
