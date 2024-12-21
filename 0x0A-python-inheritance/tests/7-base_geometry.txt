@@ -9,12 +9,20 @@ This test file contains doctests to validate the functionality of the
 
 Usage:
     To run the tests, use the following command:
-    $ python3 -m doctest -v 7-base_geometry.txt
+    $ python3 -m doctest -v ./tests/7-base_geometry.txt
 
 Notes:
 ------
 - This file covers standard and edge cases for the `BaseGeometry` class.
 - Ensure that exceptions are raised correctly for invalid inputs.
+
+Author:
+-------
+Albert Mwanza
+
+Date:
+-----
+2024-12-22
 """
 
 # Import module:
