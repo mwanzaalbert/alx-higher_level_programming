@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-"""The module defines the Rectangle class that inherits from BaseGeometry."""
+"""
+Rectangle module.
+
+This module defines a Rectangle class that inherits from BaseGeometry.
+"""
 
 __author__ = "Albert Mwanza"
 __license__ = "MIT"
