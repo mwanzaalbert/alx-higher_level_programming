@@ -1,6 +1,13 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-"""Defines a locked class."""
+"""
+Define a LockedClass module.
+
+This module defines the LockedClass, a class that restricts the user
+from dynamically creating new instance attributes except for
+`first_name`.
+
+"""
 
 
 class LockedClass:
