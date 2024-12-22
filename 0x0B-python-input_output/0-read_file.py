@@ -22,7 +22,7 @@ def read_file(filename=""):
     """
     with open(filename, encoding="utf-8") as infile:
         data = infile.read()
-        print(data)
+        print(data, end="")
 
 
 if __name__ == "__main__":
