@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+# -*- coding: utf-8 -*-
 """The module defines a file-appending function."""
 
 __author__ = "Albert Mwanza"
