@@ -46,7 +46,7 @@ class Student:
                  provided, only
             attributes in the list that exist in the instance are included.
         """
-        if attrs and isinstance(attrs, list) \
+        if isinstance(attrs, list) \
                 and all(isinstance(attr, str) for attr in attrs):
 
             return {key: self.__dict__.get(key) for
