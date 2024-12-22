@@ -56,13 +56,13 @@ def add_to_or_modify_json_file(filename: str, items_to_add: List[Any]) -> None:
 
 if __name__ == "__main__":
     # Define the target JSON file
-    filename = "add_item.json"
+    file_name = "add_item.json"
 
     # Get command-line arguments, excluding the script name
     args = sys.argv[1:]
 
     # Add arguments to the JSON file
     try:
-        add_to_or_modify_json_file(filename, args)
+        add_to_or_modify_json_file(file_name, args)
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
