@@ -44,10 +44,6 @@ def add_to_or_modify_json_file(filename: str, items_to_add: List[Any]) -> None:
         # Load existing data from the file
         data = load_from_json_file(filename)
 
-        if not isinstance(data, list):
-            raise ValueError(f"Expected a list in '{filename}'" +
-                             f", but got {type(data).__name__}.")
-
         # Extend the existing list with new items
         data.extend(items_to_add)
     else:
@@ -66,7 +62,5 @@ if __name__ == "__main__":
     args = sys.argv[1:]
 
     # Add arguments to the JSON file
-    try:
-        add_to_or_modify_json_file(filename, args)
-    except Exception as e:
-        print(f"Error: {e}", file=sys.stderr)
+
+    add_to_or_modify_json_file(filename, args)
