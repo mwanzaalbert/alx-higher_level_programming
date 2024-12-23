@@ -13,14 +13,6 @@ The module handles various edge cases, such as:
 - Empty matrices
 - Matrices containing non-numeric elements
 - Incompatible matrices for multiplication
-
-## Example Usage:
-```python
-from matrix_mul import matrix_mul
-
-# Valid multiplication example
-result = matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
-print(result)  # Output: [[19, 22], [43, 50]]
 """
 
 __author__ = "Albert Mwanza"
