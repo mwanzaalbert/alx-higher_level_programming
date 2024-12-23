@@ -30,6 +30,11 @@ Notes:
     - The encoding used for reading and writing the file is UTF-8.
 """
 
+__author__ = "Albert Mwanza"
+__license__ = "MIT"
+__date__ = "2024-12-23"
+__version__ = "1.1"
+
 
 def append_after(filename, search_string, new_string):
     """
