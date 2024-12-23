@@ -29,13 +29,15 @@ Notes:
 # Test Cases and Expected Behavior
 1. **Valid Cases**
 
-	# Valid multiplication case
-	>>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
-	[[19, 22], [43, 50]]
+# Valid multiplication case
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
 
-	# Valid multiplication case with more rows
-	>>> lazy_matrix_mul([[1, 2], [3, 4], [3, 4]], [[5, 6, 1], [7, 8, 2]])
-	[[19, 22, 5], [43, 50, 11], [43, 50, 11]]
+
+# Valid multiplication case with more rows
+>>> lazy_matrix_mul([[1, 2], [3, 4], [3, 4]], [[5, 6, 1], [7, 8, 2]])
+[[19 22  5]
+ [43 50 11]
+ [43 50 11]]
 
 2. **Error Cases**
 

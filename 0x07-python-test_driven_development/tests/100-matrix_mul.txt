@@ -24,7 +24,7 @@ Notes:
 """
 
 # Import module:
->>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+# matrix_mul = __import__('100-matrix_mul').matrix_mul
 
 # Test Cases and Expected Behavior
 1. **Valid Cases**
