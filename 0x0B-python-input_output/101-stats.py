@@ -1,9 +1,3 @@
-
-"""
-Created on Mon Dec 23 05:50:52 2024
-
-@author: Albert Mwanza
-"""
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """
@@ -16,6 +10,7 @@ Statistics printed after every 10 lines and upon keyboard interruption:
 - Total file size: sum of all file sizes from input lines.
 - Number of lines by status code in ascending order.
 """
+
 __author__ = "Albert Mwanza"
 __license__ = "MIT"
 __date__ = "2024-12-23"
