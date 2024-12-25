@@ -290,9 +290,9 @@ class TestBaseSaveToFile(unittest.TestCase):
         Rectangle.save_to_file([r2, r3])
         with open("Rectangle.json", "r") as file:
             content = json.load(file)
-        self.assertEqual(len(content), 3)
-        self.assertEqual(content[0]["width"], 3)
-        self.assertEqual(content[2]["x"], 3)
+        self.assertEqual(len(content), 2)
+        self.assertEqual(content[0]["width"], 5)
+        self.assertEqual(content[1]["x"], 3)
 
     def test_save_to_file_squares(self):
         """Test save_to_file with a list of Square objects."""
@@ -317,9 +317,9 @@ class TestBaseSaveToFile(unittest.TestCase):
         Square.save_to_file([s2, s3])
         with open("Square.json", "r") as file:
             content = json.load(file)
-        self.assertEqual(len(content), 3)
-        self.assertEqual(content[0]["size"], 2)
-        self.assertEqual(content[1]["x"], 1)
+        self.assertEqual(len(content), 2)
+        self.assertEqual(content[0]["size"], 4)
+        self.assertEqual(content[1]["x"], 3)
 
     def test_save_to_file_invalid_input(self):
         """Test save_to_file with invalid inputs."""
@@ -339,8 +339,13 @@ class TestBaseSaveToFile(unittest.TestCase):
         with open("Rectangle.json", "w") as file:
             pass  # Create an empty file
 
-        with self.assertRaises(json.JSONDecodeError):
-            Rectangle.save_to_file([Rectangle(3, 4)])
+        Rectangle.save_to_file([Rectangle(3, 4)])
+
+        with open("Rectangle.json", "r") as file:
+            content = json.load(file)
+
+        self.assertEqual(len(content), 1)
+        self.assertEqual(content[0]["width"], 3)
 
     def test_save_to_file_large_list(self):
         """Test save_to_file with a very large list of objects."""
