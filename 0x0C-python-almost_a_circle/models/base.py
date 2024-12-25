@@ -99,20 +99,8 @@ class Base:
 
             json_string = cls.to_json_string(list_dictionaries)
 
-            if not os.path.exists(file_name):
-                with open(file_name, 'w') as outfile:
-                    outfile.write(json_string)
-
-            else:
-                with open(file_name, 'r') as infile:
-                    data = json.load(infile)
-
-                with open(file_name, 'w', ) as outfile:
-                    data.extend(list_dictionaries)
-
-                    json_string = cls.to_json_string(data)
-
-                    outfile.write(json_string)
+            with open(file_name, 'w', ) as outfile:
+                outfile.write(json_string)
         else:
             with open(file_name, 'w') as outfile:
                 outfile.write(cls.to_json_string([]))
