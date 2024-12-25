@@ -9,6 +9,7 @@ __version__ = "1.1"
 
 import io
 import os
+import json
 import unittest
 from unittest.mock import patch
 from models.base import Base
@@ -355,6 +356,22 @@ class TestSquareAdditionalEdgeCases(unittest.TestCase):
         self.assertEqual(len(squares), 2)
         self.assertEqual(squares[0].to_dictionary(), s1.to_dictionary())
         self.assertEqual(squares[1].to_dictionary(), s2.to_dictionary())
+
+        Square.save_to_file(None)
+        self.assertTrue(os.path.exists("Square.json"))
+        with open("Square.json", "r") as file:
+            content = file.read()
+        self.assertEqual(content, '[]')
+        self.assertIsInstance(json.loads(content), list)
+        self.assertEqual(len(json.loads(content)), 0)
+
+        Square.save_to_file([])
+        self.assertTrue(os.path.exists("Square.json"))
+        with open("Square.json", "r") as file:
+            content = file.read()
+        self.assertEqual(content, '[]')
+        self.assertIsInstance(json.loads(content), list)
+        self.assertEqual(len(json.loads(content)), 0)
 
     def test_clone_square(self):
         """Test deep copying of a Square object."""

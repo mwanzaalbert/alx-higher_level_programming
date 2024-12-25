@@ -237,13 +237,17 @@ class TestBaseSaveToFile(unittest.TestCase):
         self.assertTrue(os.path.exists("Rectangle.json"))
         with open("Rectangle.json", "r") as file:
             content = file.read()
-        self.assertEqual(content, "[]")
+        self.assertEqual(content, '[]')
+        self.assertIsInstance(json.loads(content), list)
+        self.assertEqual(len(json.loads(content)), 0)
 
         Square.save_to_file(None)
-        self.assertTrue(os.path.exists("Rectangle.json"))
-        with open("Rectangle.json", "r") as file:
+        self.assertTrue(os.path.exists("Square.json"))
+        with open("Square.json", "r") as file:
             content = file.read()
-        self.assertEqual(content, "[]")
+        self.assertEqual(content, '[]')
+        self.assertIsInstance(json.loads(content), list)
+        self.assertEqual(len(json.loads(content)), 0)
 
     def test_save_to_file_empty_list(self):
         """Test save_to_file with an empty list."""
@@ -251,13 +255,17 @@ class TestBaseSaveToFile(unittest.TestCase):
         self.assertTrue(os.path.exists("Rectangle.json"))
         with open("Rectangle.json", "r") as file:
             content = file.read()
-        self.assertEqual(content, "[]")
+        self.assertEqual(content, '[]')
+        self.assertIsInstance(json.loads(content), list)
+        self.assertEqual(len(json.loads(content)), 0)
 
         Square.save_to_file([])
-        self.assertTrue(os.path.exists("Rectangle.json"))
-        with open("Rectangle.json", "r") as file:
+        self.assertTrue(os.path.exists("Square.json"))
+        with open("Square.json", "r") as file:
             content = file.read()
-        self.assertEqual(content, "[]")
+        self.assertEqual(content, '[]')
+        self.assertIsInstance(json.loads(content), list)
+        self.assertEqual(len(json.loads(content)), 0)
 
     def test_save_to_file_rectangles(self):
         """Test save_to_file with a list of Rectangle objects."""
