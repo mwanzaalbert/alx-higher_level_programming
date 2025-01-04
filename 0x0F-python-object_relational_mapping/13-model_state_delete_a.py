@@ -25,16 +25,20 @@ if __name__ == "__main__":
     # Create a session
     session = Session()
 
-    # Query all State objects that contain the letter 'a'
-    states_to_delete = session.query(
-        State).filter(State.name.ilike('%a%')).all()
+    try:
+        # Perform a bulk delete for all State objects with 'a' in their name
+        session.query(State).filter(State.name.ilike('%a%')
+                                    ).delete(synchronize_session='fetch')
 
-    # Delete each state in the list
-    for state in states_to_delete:
-        session.delete(state)
-
-    # Commit the transaction
-    session.commit()
+        # Commit the transaction
+        session.commit()
+    except Exception as e:
+        # Rollback the transaction in case of an error
+        session.rollback()
+        print(f"Error occurred: {e}")
+    finally:
+        # Close the session
+        session.close()
 
     # Close the session
     session.close()
