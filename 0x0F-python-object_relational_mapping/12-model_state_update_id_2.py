@@ -22,7 +22,7 @@ if __name__ == "__main__":
     session = Session()
 
     # Query the State object with id = 2
-    state = session.query(State).filter_by(id=2).first()
+    state = session.query(State).filter(State.id == 2).first()
 
     # Change the name of the State object
     if state:
