@@ -24,29 +24,33 @@ __version__ = "1.1"
 
 def text_indentation(text):
     """
-    Format the input text by adding two newlines after each `.`, `:`, or `?`.
+    Prints a text with 2 new lines after each of these characters:
 
-    Args_:
-        text (str): The text to format.
+    '.', '?', and ':'.
 
-    Raises_:
-        TypeError: If the input is not a string.
+    Args:
+        text (str): The text to be processed and printed.
+
+    Raises:
+        TypeError: If the text is not a string.
     """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    delimiters = {'.', '?', ':'}  # Use a set for faster lookups
-    formatted_text = ""
-    skip_space = False
+    # Characters to process
+    characters = ".?:"
+    result = ""
+    i = 0
 
-    for char in text:
-        if skip_space and char.isspace():
+    while i < len(text):
+        result += text[i]
+        if text[i] in characters:
+            result += "\n\n"
+            i += 1
+            # Skip any spaces after the character
+            while i < len(text) and text[i] == " ":
+                i += 1
             continue
-        skip_space = False
+        i += 1
 
-        formatted_text += char
-        if char in delimiters:
-            formatted_text += "\n\n"
-            skip_space = True
-
-    print(formatted_text.strip())
+    print(result, end="")
