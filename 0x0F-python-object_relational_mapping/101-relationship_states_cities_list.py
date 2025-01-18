@@ -34,7 +34,7 @@ if __name__ == "__main__":
     for state in states:
         print(f"{state.id}: {state.name}")
         for city in state.cities:
-            print(f"{"":4s}{city.id}: {city.name}")
+            print(f"{'':4s}{city.id}: {city.name}")
 
     # Close the session
     session.close()
