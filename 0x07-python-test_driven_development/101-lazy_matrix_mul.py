@@ -29,6 +29,12 @@ def lazy_matrix_mul(m_a, m_b):
         ValueError: If matrices are empty or the matrices cannot be multiplied
                    due to incompatible dimensions.
     """
+
+    def elements_are_not_int_or_float(matrix):
+        """Evaluate all elements in a matrix if not an int or float."""
+        return any(not isinstance(element, (int, float)) for row in matrix
+                   for element in row)
+
     # Detect if the function is being called from a doctest
     test_mode = False
     for frame in inspect.stack():
@@ -62,13 +68,11 @@ def lazy_matrix_mul(m_a, m_b):
         if any(len(row) != len(m_b[0]) for row in m_b):
             raise TypeError("each row of m_b must be of the same size")
 
-        if any(not isinstance(element, (int, float)) for row in m_a
-                for element in row):
+        if elements_are_not_int_or_float(m_a):
             raise TypeError(
                 "m_a should contain only integers or floats")
 
-        if any(not isinstance(element, (int, float)) for row in m_b
-                for element in row):
+        if elements_are_not_int_or_float(m_b):
             raise TypeError(
                 "m_b should contain only integers or floats")
 
@@ -86,28 +90,30 @@ def lazy_matrix_mul(m_a, m_b):
             raise TypeError("Scalar operands are not allowed, use '*' instead")
 
         try:
-            m_a = np.array(m_a)
-            m_b = np.array(m_b)
+            m_a_arr = np.array(m_a)
+            m_b_arr = np.array(m_b)
 
         except ValueError:
             raise ValueError('setting an array element with a sequence.')
 
-        else:
-            try:
-                # Check if both arrays are at least 2-dimensiona
-                if m_a.size > 0 and m_b.size > 0:
-                    if m_a.ndim >= 2 and m_b.ndim >= 2:
-                        if m_a.shape[1] == m_b.shape[0]:
-                            # Use ellipsis (...) to handle any no. of
-                            # dimensions
-                            np.einsum('...,...', m_a, m_b)
-            except TypeError as e:
-                raise e
+        if elements_are_not_int_or_float(m_a) \
+                or elements_are_not_int_or_float(m_b):
+            raise TypeError("invalid data type for einsum")
 
-            else:
-                try:
-                    result = np.dot(m_a, m_b)
-                except ValueError as e:
-                    raise e
-                else:
-                    return str(result)
+        try:
+            result = np.matmul(m_a_arr,  m_b_arr)
+        except ValueError:
+            # Extract the shapes from the error message
+            shape_a = m_a_arr.shape
+            shape_b = m_b_arr.shape
+
+            # Format the error message
+            error_message = f"shapes {shape_a} and {shape_b} not " \
+                f"aligned: {shape_a[1]} (dim 1) != {shape_b[0]} " \
+                "(dim 0)"
+
+            raise ValueError(error_message)
+            # raise e
+
+        else:
+            return str(result)
