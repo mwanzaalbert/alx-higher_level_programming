@@ -94,11 +94,13 @@ def lazy_matrix_mul(m_a, m_b):
 
         else:
             try:
-                if m_a.size > 0 and m_b.size > 0 and\
-                        m_a.shape[1] == m_b.shape[0]:
-                    # Use ellipsis (...) to handle any number of dimensions
-                    np.einsum('...,...', m_a, m_b)
-
+                # Check if both arrays are at least 2-dimensiona
+                if m_a.size > 0 and m_b.size > 0:
+                    if m_a.ndim >= 2 and m_b.ndim >= 2:
+                        if m_a.shape[1] == m_b.shape[0]:
+                            # Use ellipsis (...) to handle any no. of
+                            # dimensions
+                            np.einsum('...,...', m_a, m_b)
             except TypeError as e:
                 raise e
 
