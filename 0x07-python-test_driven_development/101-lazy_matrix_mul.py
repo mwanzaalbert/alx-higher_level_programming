@@ -89,31 +89,31 @@ def lazy_matrix_mul(m_a, m_b):
         if not isinstance(m_a, list) or not isinstance(m_b, list):
             raise TypeError("Scalar operands are not allowed, use '*' instead")
 
+        if elements_are_not_int_or_float(m_a) \
+                or elements_are_not_int_or_float(m_b):
+            raise TypeError("invalid data type for einsum")
+
         try:
             m_a_arr = np.array(m_a)
             m_b_arr = np.array(m_b)
 
         except ValueError:
             raise ValueError('setting an array element with a sequence.')
-
-        if elements_are_not_int_or_float(m_a) \
-                or elements_are_not_int_or_float(m_b):
-            raise TypeError("invalid data type for einsum")
-
-        try:
-            result = np.matmul(m_a_arr,  m_b_arr)
-        except ValueError:
-            # Extract the shapes from the error message
-            shape_a = m_a_arr.shape
-            shape_b = m_b_arr.shape
-
-            # Format the error message
-            error_message = f"shapes {shape_a} and {shape_b} not " \
-                f"aligned: {shape_a[1]} (dim 1) != {shape_b[0]} " \
-                "(dim 0)"
-
-            raise ValueError(error_message)
-            # raise e
-
         else:
-            return str(result)
+            try:
+                result = np.matmul(m_a_arr,  m_b_arr)
+            except ValueError:
+                # Extract the shapes from the error message
+                shape_a = m_a_arr.shape
+                shape_b = m_b_arr.shape
+
+                # Format the error message
+                error_message = f"shapes {shape_a} and {shape_b} not " \
+                    f"aligned: {shape_a[1]} (dim 1)!= {shape_b[0]} " \
+                    "(dim 0)"
+
+                raise ValueError(error_message)
+                # raise e
+
+            else:
+                return str(result)
