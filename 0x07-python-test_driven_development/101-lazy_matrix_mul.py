@@ -101,19 +101,9 @@ def lazy_matrix_mul(m_a, m_b):
             raise ValueError('setting an array element with a sequence.')
         else:
             try:
-                result = np.matmul(m_a_arr,  m_b_arr)
-            except ValueError:
-                # Extract the shapes from the error message
-                shape_a = m_a_arr.shape
-                shape_b = m_b_arr.shape
-
-                # Format the error message
-                error_message = f"shapes {shape_a} and {shape_b} not " \
-                    f"aligned: {shape_a[1]} (dim 1)!= {shape_b[0]} " \
-                    "(dim 0)"
-
-                raise ValueError(error_message)
-                # raise e
+                result = np.dot(m_a_arr,  m_b_arr)
+            except ValueError as e:
+                raise e
 
             else:
                 return str(result)
